@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    float velocity = 5f;
+    [SerializeField] float velocity = 7f;
     Rigidbody rb;
     [SerializeField] Camera maincamera;
     [SerializeField] Transform bossRef;
@@ -10,30 +10,30 @@ public class Player : MonoBehaviour
     #region Singleton
 
     //para fazer um singleton
-    // singleton só funciona se 1 objeto unico dentro do codigo que pode ser indetificado sem precisar ser referenciado
+    // singleton sï¿½ funciona se 1 objeto unico dentro do codigo que pode ser indetificado sem precisar ser referenciado
     // similar a "deus" no codigo - ele fala e acontece - sem precisar de uma referncia
     // todos tem acesso a ele e todo mundo pode alterar e consultar ele
-    // ter cuidado, só usar singleton quando for ter certeza que tiver apenas 1, não ficar criando atoa
+    // ter cuidado, sï¿½ usar singleton quando for ter certeza que tiver apenas 1, nï¿½o ficar criando atoa
 
     //criar uma var public estatica com nome da propria classe, precisa ser publica e static com o nome instancia
     public static Player instance;
 
     //var static uma variavel "idependente dos objetos", o valor dela se mantem o mesmo em todos os objetos da mesma classe
-    //ex. bonus de XP é static nunca altera, sendo um valor fixo, enquanto o XP em si altera de inimigo pra inimigo.
+    //ex. bonus de XP ï¿½ static nunca altera, sendo um valor fixo, enquanto o XP em si altera de inimigo pra inimigo.
 
-    //muito util para limitar valores fixos (eg. preço em uma loja do jogo)
+    //muito util para limitar valores fixos (eg. preï¿½o em uma loja do jogo)
 
     private void Awake()
     {
-        // pergunto se ela nao é nula e se não sou eu
+        // pergunto se ela nao ï¿½ nula e se nï¿½o sou eu
         if (instance != null && instance != this)
         {
-            //se existir e não for eu, mando destruir
+            //se existir e nï¿½o for eu, mando destruir
             Destroy(instance);
         }
         else
         {
-            //caso eu ainda não exista, faço existir
+            //caso eu ainda nï¿½o exista, faï¿½o existir
             instance = this;
         }
     }
