@@ -7,10 +7,8 @@ public class SpawnProjectiles : MonoBehaviour
     [SerializeField] GameObject spawnPoint;
     [SerializeField] Transform trPlayer;
     [SerializeField] List<GameObject> vfx = new List<GameObject>();
-    [SerializeField] float DelayParaAtirar = 0f;
-
+    
     GameObject efeitosParaSpawnar;
-    GameObject particles;
     Vector3 direcao;
 
     void Start()
@@ -21,9 +19,9 @@ public class SpawnProjectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= DelayParaAtirar) 
+        if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            DelayParaAtirar = Time.time + 1 / efeitosParaSpawnar.GetComponent<MovimentoDosProjectiles>().PropriedadeCadenciaDeTiro;
+           
             SpawnVFX();
             
         }
