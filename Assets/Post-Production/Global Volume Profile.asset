@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ShadowsMidtonesHighlights
-  active: 0
+  active: 1
   shadows:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.9909771, z: 0.99097717, w: -0.12413788}
@@ -52,13 +52,13 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 1.06
   intensity:
     m_OverrideState: 1
-    m_Value: 0.59
+    m_Value: 0.3
   scatter:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.628
   clamp:
     m_OverrideState: 0
     m_Value: 65472
