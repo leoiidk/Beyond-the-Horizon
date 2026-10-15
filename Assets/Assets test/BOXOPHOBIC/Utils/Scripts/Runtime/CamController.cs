@@ -1,12 +1,12 @@
 ﻿#if ENABLE_INPUT_SYSTEM
 #define USE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem;
 #endif
 using UnityEngine;
-
+/*
 namespace Boxophobic.Utility
 {
-    public class CamController : MonoBehaviour
+   public class CamController : MonoBehaviour
     {
         public float movementSpeed = 5f;
         public float accelerationMultiplier = 2f;
@@ -14,34 +14,40 @@ namespace Boxophobic.Utility
         private float yaw = 0f;
         private float pitch = 0f;
 #if USE_INPUT_SYSTEM
-        private InputAction moveAction;
-        private InputAction lookAction;
-        private InputAction shiftAction;
+       // private InputAction moveAction;
+       // private InputAction lookAction;
+       // private InputAction shiftAction;
 #endif
-        void OnEnable()
-        {
+*/
+
+/*      void OnEnable()
+      {
 #if USE_INPUT_SYSTEM
-            var map = new InputActionMap("Cam Controller");
-            lookAction = map.AddAction("look", binding: "<Mouse>/delta");
-            moveAction = map.AddAction("move");
-            shiftAction = map.AddAction("shift");
-            moveAction.AddCompositeBinding("Dpad")
-                .With("Up", "<Keyboard>/w")
-                .With("Up", "<Keyboard>/upArrow")
-                .With("Down", "<Keyboard>/s")
-                .With("Down", "<Keyboard>/downArrow")
-                .With("Left", "<Keyboard>/a")
-                .With("Left", "<Keyboard>/leftArrow")
-                .With("Right", "<Keyboard>/d")
-                .With("Right", "<Keyboard>/rightArrow");
-            shiftAction.AddBinding("<Keyboard>/leftShift");
-            shiftAction.AddBinding("<Keyboard>/rightShift");
-            lookAction.Enable();
-            moveAction.Enable();
-            shiftAction.Enable();
+         / var map = new InputActionMap("Cam Controller");
+          lookAction = map.AddAction("look", binding: "<Mouse>/delta");
+          moveAction = map.AddAction("move");
+          shiftAction = map.AddAction("shift");
+          moveAction.AddCompositeBinding("Dpad")
+              .With("Up", "<Keyboard>/w")
+              .With("Up", "<Keyboard>/upArrow")
+              .With("Down", "<Keyboard>/s")
+              .With("Down", "<Keyboard>/downArrow")
+              .With("Left", "<Keyboard>/a")
+              .With("Left", "<Keyboard>/leftArrow")
+              .With("Right", "<Keyboard>/d")
+              .With("Right", "<Keyboard>/rightArrow");
+          shiftAction.AddBinding("<Keyboard>/leftShift");
+          shiftAction.AddBinding("<Keyboard>/rightShift");
+          lookAction.Enable();
+          moveAction.Enable();
+          shiftAction.Enable();
 #endif
-        }
-        void OnDisable()
+
+
+      }
+*/
+/*
+ * void OnDisable()
         {
 #if USE_INPUT_SYSTEM
             lookAction?.Disable();
@@ -49,6 +55,8 @@ namespace Boxophobic.Utility
             shiftAction?.Disable();
 #endif
         }
+*/
+/*
         void Start()
         {
             yaw = transform.eulerAngles.y;
@@ -63,6 +71,9 @@ namespace Boxophobic.Utility
             float vertical = 0f;
             float mouseX = 0f;
             float mouseY = 0f;
+*/
+
+/*
 #if USE_INPUT_SYSTEM
             bool shifting = shiftAction.ReadValue<float>() > 0f;
             if (shifting) currentSpeed *= accelerationMultiplier;
@@ -79,7 +90,9 @@ namespace Boxophobic.Utility
             vertical = Input.GetAxis("Vertical");
             mouseX = Input.GetAxis("Mouse X");
             mouseY = Input.GetAxis("Mouse Y");
-#endif
+#endif 
+*/
+/*
             transform.Translate(horizontal * currentSpeed * Time.deltaTime, 0f, vertical * currentSpeed * Time.deltaTime);
             yaw += sensitivity * mouseX;
             pitch -= sensitivity * mouseY;
@@ -87,4 +100,6 @@ namespace Boxophobic.Utility
             transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
         }
     }
-}
+
+
+}*/
