@@ -3,46 +3,60 @@ using UnityEngine;
 
 public class MovimentacaoTerceiraPessoa : MonoBehaviour
 {
+    Transform tr;
     Rigidbody rb;
-    Vector3 inputDirecao;
-    [SerializeField] float velocidade = 10f;
-    float dirX, dirZ;
+  
     [SerializeField] Transform trCamera;
-    [SerializeField] float velRotacao = 5f;
+    [SerializeField] float velocidadeDeMovimento = 10f;
+    [SerializeField] float velocidadeDeRotacao = 5f;
+
+    Vector3 frenteProjetada;
+    Vector3 velFinal;
+    Vector2 inputJogador;
+    Vector3 direcao;
 
     void Start()
     {
+        tr = transform;
         rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        Movimentacao();
+        LeInput();
         AplicarDirecao();
     }
     private void FixedUpdate()
     {
-        rb.linearVelocity = inputDirecao * velocidade;
+        AplicaMovimento();
     }
 
-    void Movimentacao()
+    void LeInput()
     {
-        dirX = Input.GetAxis("Horizontal");
-        dirZ = Input.GetAxis("Vertical");
+        inputJogador.x = Input.GetAxis("Horizontal");
+        inputJogador.y = Input.GetAxis("Vertical");
 
     }
     private void AplicarDirecao()
     {
-        AplicarRotacao();
+        if(inputJogador.magnitude > 0)
+        {
+            direcao = velFinal.normalized;
+            direcao.y = 0;
+            AplicarRotacao();
+        }
     }
-
+    private void AplicaMovimento()
+    {
+        velFinal = trCamera.right * inputJogador.x;
+        frenteProjetada = Vector3.ProjectOnPlane(trCamera.forward, Vector3.up).normalized;
+        velFinal += frenteProjetada * inputJogador.y;
+        velFinal *= velocidadeDeMovimento;
+        velFinal.y = rb.linearVelocity.y;
+        rb.linearVelocity = velFinal;
+    }
     private void AplicarRotacao()
     {
-        if (inputDirecao.magnitude < 0.01f) return;
-
-        Quaternion rotacaoAlvo = Quaternion.LookRotation(inputDirecao);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotacaoAlvo, velRotacao * Time.deltaTime);
+       tr.forward = Vector3.Slerp(tr.forward, direcao, velocidadeDeRotacao * Time.deltaTime); 
     }
 
 }
