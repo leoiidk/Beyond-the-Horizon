@@ -387,8 +387,8 @@ Transform:
   m_GameObject: {fileID: 329238246}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 4.62, z: -14.137037}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 2}
+  m_LocalPosition: {x: 0, y: 145.25589, z: -242}
+  m_LocalScale: {x: 47.161003, y: 47.161003, z: 62.881336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1758,8 +1758,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss
   barraDeVida: {fileID: 34763371}
   vidaMaxima: 100
-  vidaAtual: 100
-  danoProjetil: 5
+  vidaAtual: 0
+  danoProjetil: 10
   playerProcjectile: {fileID: 8094035622093444501, guid: 139e916cf77ef334eab8f9b7108fdce6, type: 3}
   bossMesh: {fileID: 62586117}
 --- !u!54 &1479727870
