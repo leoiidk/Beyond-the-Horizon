@@ -3,11 +3,6 @@
   <component name="UserContentModel">
     <attachedFolders />
     <explicitIncludes />
-    <explicitExcludes>
-      <Path>obj</Path>
-      <Path>Library</Path>
-      <Path>Temp</Path>
-      <Path>Logs</Path>
-    </explicitExcludes>
+    <explicitExcludes />
   </component>
 </project>
