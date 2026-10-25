@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraComTracking
   trObjetoParaSeguir: {fileID: 1361757187}
+  trBoss: {fileID: 1370577093}
   distanciaDoObjeto: {x: 0, y: 0, z: 0}
   velMovimento: 8
   distanciaParaOlharAFrente: 12
