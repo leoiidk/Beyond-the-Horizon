@@ -446,15 +446,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 329238246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115c85baac5799d449293e9bf9f46e3b, type: 3}
+  m_Script: {fileID: 11500000, guid: c2fde31cca36ef14eb3c7cb44dff60a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraComTracking
   trObjetoParaSeguir: {fileID: 1361757187}
-  distanciaDoObjeto: {x: 0, y: 2, z: -6}
+  distanciaDoObjeto: {x: 0, y: 0, z: 0}
   velMovimento: 8
   distanciaParaOlharAFrente: 12
-  enquadramento: {x: 0, y: 4, z: 0}
+  enquadramento: {x: 0, y: 0, z: 0}
   velRotacao: 12
+  meuTr: {fileID: 0}
+  direcaoNoChao: {x: 0, y: 0, z: 1}
 --- !u!1 &332683689
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +651,8 @@ MonoBehaviour:
   trPlayer: {fileID: 1361757187}
   vfx:
   - {fileID: 8094035622093444501, guid: 139e916cf77ef334eab8f9b7108fdce6, type: 3}
-  tamanhoInicialDoPool: 20
+  efeitosParaSpawnar: {fileID: 0}
+  direcao: {x: 0, y: 0, z: 0}
 --- !u!4 &640001162
 Transform:
   m_ObjectHideFlags: 0
@@ -1557,11 +1560,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1361757183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c95951c51e2f2c4fa901e28db8c663a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d0c3bf57af3b9841b0de9f3cea6d027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimentacaoTerceiraPessoa
+  tr: {fileID: 0}
+  rb: {fileID: 0}
+  trCamera: {fileID: 329238249}
   velocidadeDeMovimento: 10
-  velocidadeDeCurva: 120
+  velocidadeDeRotacao: 5
+  frenteProjetada: {x: 0, y: 0, z: 0}
+  velFinal: {x: 0, y: 0, z: 0}
+  inputJogador: {x: 0, y: 0}
+  direcao: {x: 0, y: 0, z: 0}
 --- !u!1 &1370577092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,7 +1641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb211d69e8a51fc41a826b305713b17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAt
+  tr: {fileID: 0}
   trAlvo: {fileID: 1361757187}
+  velRotacao: 3
 --- !u!1 &1395182001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1774,7 @@ MonoBehaviour:
   danoProjetil: 10
   playerProcjectile: {fileID: 8094035622093444501, guid: 139e916cf77ef334eab8f9b7108fdce6, type: 3}
   bossMesh: {fileID: 62586117}
+  estaMorto: 0
 --- !u!54 &1479727870
 Rigidbody:
   m_ObjectHideFlags: 0

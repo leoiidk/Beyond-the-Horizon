@@ -159,3 +159,9 @@ x86/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+.claude
+.devcontainer
+livros
+CLAUDE.md
+Arquivos
