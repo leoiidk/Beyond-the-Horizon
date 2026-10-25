@@ -5037,7 +5037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimentoDosProjectiles
   velocidade: 20
-  cadenciaDeTiro: 10
+  cadenciaDeTiro: 0.5
   vida: 3
 --- !u!65 &-1671854537199004394
 BoxCollider:
