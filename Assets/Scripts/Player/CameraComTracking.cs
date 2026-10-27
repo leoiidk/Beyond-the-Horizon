@@ -1,66 +1,98 @@
-using System;
 using UnityEngine;
 
-public class CameraComTracking : MonoBehaviour
+namespace Player
 {
-    [Header("Alvo")]
-    [SerializeField] Transform trObjetoParaSeguir; //o barco
-
-    [Header("Posicao da camera")]
-    [SerializeField] Vector3 distanciaDoObjeto = new Vector3(0, 0, 0); //X: para o lado | Y: para cima | Z: para tr·s (negativo)
-    [SerializeField] float velMovimento = 8f; //qu„o r·pido a c‚mera chega na posiÁ„o nova (maior = mais "dura")
-
-    [Header("Para onde a camera olha")]
-    [SerializeField] float distanciaParaOlharAFrente = 12f; //olha para um ponto a essa dist‚ncia na frente do barco
-    [SerializeField] Vector3 enquadramento = new Vector3(0, 4, 0); //ajuste fino da mira: X: para o lado | Y: para cima | Z: para frente
-    [SerializeField] float velRotacao = 12f; //qu„o r·pido a c‚mera gira para a direÁ„o nova (maior = mais "dura")
-
-    Transform meuTr;
-    Vector3 direcaoNoChao = Vector3.forward;
-
-    void Start()
+    public class CameraComTracking : MonoBehaviour
     {
-        meuTr = transform;
-    }
-    void Update()
-    {
-        AtualizarDirecao(); //1) pego a "frente" do barco
-        PosicionaCamera(); //2) levo a c‚mera para tr·s do barco
-        RotacionaCameraParaAlvo(); //3) giro a c‚mera para olhar na frente do barco
-    }
+        [Header("Alvos")]
+        [SerializeField] Transform trObjetoParaSeguir; //o barco
+        [SerializeField] Transform trBoss; //o inimigo travado (lock-on). Vazio = c√¢mera s√≥ segue a frente do barco
 
-    private void AtualizarDirecao()
-    {
-        Vector3 direcao = Vector3.ProjectOnPlane(trObjetoParaSeguir.forward, Vector3.up).normalized; //tiro a altura: sÛ me importa a direÁ„o no ch„o
-        if (direcao != Vector3.zero)
+        [Header("Posicao da camera")]
+        [SerializeField] float distanciaAtras = 20f; //quanto a c√¢mera fica atr√°s do barco (na linha barco -> boss)
+        [SerializeField] float altura = 8f; //quanto a c√¢mera fica acima do barco
+        [SerializeField] float deslocamentoLateral = 0f; //desloca a c√¢mera para o lado (0 = barco no centro da tela)
+        [SerializeField] float velMovimento = 8f; //qu√£o r√°pido a c√¢mera chega na posi√ß√£o nova (maior = mais "dura")
+
+        [Header("Enquadramento")]
+        [SerializeField, Range(0f, 1f)] float pesoDoBoss = 0.6f; //para onde a c√¢mera mira: 0 = no barco | 1 = no boss
+        [SerializeField] float alturaDoOlhar = 3f; //sobe o ponto de mira
+        [SerializeField] float velRotacao = 12f; //qu√£o r√°pido a c√¢mera gira para a dire√ß√£o nova (maior = mais "dura")
+
+        const float distanciaMinimaDoBoss = 1f; //abaixo disso a dire√ß√£o barco -> boss fica inst√°vel
+
+        Transform meuTr;
+        Vector3 direcaoNoChao = Vector3.forward;
+
+        void Start()
         {
-            direcaoNoChao = direcao;
+            meuTr = transform;
+
+            //come√ßo j√° na posi√ß√£o certa: sem isso a c√¢mera "voa" pelo cen√°rio (e atravessa o barco) at√© chegar
+            AtualizarDirecao();
+            meuTr.position = CalcularPosicao();
+            meuTr.rotation = CalcularRotacao(meuTr.position);
+        }
+
+        void LateUpdate() //depois do barco se mover, para a c√¢mera n√£o tremer
+        {
+            AtualizarDirecao(); //1) pego a dire√ß√£o barco -> boss
+            PosicionaCamera(); //2) levo a c√¢mera para tr√°s do barco, nessa linha
+            RotacionaCameraParaAlvo(); //3) giro a c√¢mera para enquadrar barco e boss
+        }
+
+        private void AtualizarDirecao()
+        {
+            Vector3 direcao;
+            if (trBoss != null)
+            {
+                direcao = Vector3.ProjectOnPlane(trBoss.position - trObjetoParaSeguir.position, Vector3.up); //destino menos origem, sem altura
+                if (direcao.magnitude < distanciaMinimaDoBoss)
+                {
+                    return; //barco em cima do boss: mantenho a √∫ltima dire√ß√£o para a c√¢mera n√£o girar loucamente
+                }
+            }
+            else
+            {
+                direcao = Vector3.ProjectOnPlane(trObjetoParaSeguir.forward, Vector3.up); //sem boss: sigo a frente do barco
+            }
+
+            if (direcao != Vector3.zero)
+            {
+                direcaoNoChao = direcao.normalized;
+            }
+        }
+
+        private Vector3 CalcularPosicao()
+        {
+            Vector3 direitaNoChao = Vector3.Cross(Vector3.up, direcaoNoChao); //a direita da linha barco -> boss
+
+            Vector3 posicao = trObjetoParaSeguir.position; //come√ßo na posi√ß√£o do barco
+            posicao -= direcaoNoChao * distanciaAtras; //vou para tr√°s (lado oposto ao boss)
+            posicao += Vector3.up * altura; //para cima
+            posicao += direitaNoChao * deslocamentoLateral; //para o lado
+            return posicao;
+        }
+
+        private Quaternion CalcularRotacao(Vector3 posicaoDaCamera)
+        {
+            Vector3 pontoParaOlhar = trBoss != null
+                ? Vector3.Lerp(trObjetoParaSeguir.position, trBoss.position, pesoDoBoss) //um ponto entre o barco e o boss
+                : trObjetoParaSeguir.position + direcaoNoChao * distanciaAtras; //sem boss: um ponto na frente do barco
+            pontoParaOlhar += Vector3.up * alturaDoOlhar;
+
+            Vector3 direcaoParaOlhar = pontoParaOlhar - posicaoDaCamera; //destino menos origem
+            return Quaternion.LookRotation(direcaoParaOlhar, Vector3.up); //"cima" do mundo: a c√¢mera nunca inclina para os lados
+        }
+
+        private void PosicionaCamera()
+        {
+            meuTr.position = Vector3.Lerp(meuTr.position, CalcularPosicao(), Time.deltaTime * velMovimento); //suaviza√ß√£o: do contr√°rio a c√¢mera fica dura
+        }
+
+        private void RotacionaCameraParaAlvo()
+        {
+            meuTr.rotation = Quaternion.Slerp(meuTr.rotation, CalcularRotacao(meuTr.position), velRotacao * Time.deltaTime); //suaviza√ß√£o da rota√ß√£o
         }
     }
-    private void PosicionaCamera()
-    {
-        Vector3 direitaNoChao = Vector3.Cross(Vector3.up, direcaoNoChao); //a direita do barco
-
-        Vector3 posicaoFinalDaCamera = trObjetoParaSeguir.position; //comeÁo na posiÁ„o do barco
-        posicaoFinalDaCamera += direcaoNoChao * distanciaDoObjeto.z; //Z negativo = vou para tr·s
-        posicaoFinalDaCamera += direitaNoChao * distanciaDoObjeto.x; //para o lado
-        posicaoFinalDaCamera += Vector3.up * distanciaDoObjeto.y; //para cima
-
-        meuTr.position = Vector3.Lerp(meuTr.position, posicaoFinalDaCamera, Time.deltaTime * velMovimento); //suavizaÁ„o: do contr·rio a c‚mera fica dura
-    }
-    private void RotacionaCameraParaAlvo()
-    {
-        Vector3 direitaNoChao = Vector3.Cross(Vector3.up, direcaoNoChao);
-
-        Vector3 pontoParaOlhar = trObjetoParaSeguir.position + direcaoNoChao * distanciaParaOlharAFrente; //um ponto na frente do barco
-        pontoParaOlhar += direitaNoChao * enquadramento.x; //ajustes do enquadramento
-        pontoParaOlhar += Vector3.up * enquadramento.y;
-        pontoParaOlhar += direcaoNoChao * enquadramento.z;
-
-        Vector3 direcaoParaOlhar = pontoParaOlhar - meuTr.position; //destino menos origem
-        Quaternion rotacaoFinal = Quaternion.LookRotation(direcaoParaOlhar, Vector3.up); //"cima" do mundo: a c‚mera nunca inclina para os lados
-
-        meuTr.rotation = Quaternion.Slerp(meuTr.rotation, rotacaoFinal, velRotacao * Time.deltaTime); //suavizaÁ„o da rotaÁ„o
-    }
 }
-

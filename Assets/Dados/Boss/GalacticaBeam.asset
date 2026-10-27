@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eecd411df7b66c4a84ee9bdb26c7386, type: 3}
+  m_Name: GalacticaBeam
+  m_EditorClassIdentifier: Assembly-CSharp::Commander.Ataques.GalacticaBeam.GalacticaBeamConfig
+  nome: 
+  tempoDeCarga: 1
+  vfxDeCarga: {fileID: 0}
+  fabricaDeMisseis: {fileID: 11400000, guid: bc2bd659bfdbbfa489273915b6ec6007, type: 2}
+  quantidadePorFase:
+  - {x: 1, y: 2}
+  - {x: 1, y: 3}
+  - {x: 2, y: 4}
+  intervaloEntreMisseis: 0.4
+  tempoDeVoo: 1.5
+  alturaDoArco: 8
+  dano: 9999

@@ -446,15 +446,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 329238246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115c85baac5799d449293e9bf9f46e3b, type: 3}
+  m_Script: {fileID: 11500000, guid: c2fde31cca36ef14eb3c7cb44dff60a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraComTracking
   trObjetoParaSeguir: {fileID: 1361757187}
-  distanciaDoObjeto: {x: 0, y: 2, z: -6}
+  trBoss: {fileID: 1370577093}
+  distanciaDoObjeto: {x: 0, y: 0, z: 0}
   velMovimento: 8
   distanciaParaOlharAFrente: 12
-  enquadramento: {x: 0, y: 4, z: 0}
+  enquadramento: {x: 0, y: 0, z: 0}
   velRotacao: 12
+  meuTr: {fileID: 0}
+  direcaoNoChao: {x: 0, y: 0, z: 1}
 --- !u!1 &332683689
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +488,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControladorDeFrameRate
   frameRateAlvo: 60
+  teclaAlternar: 112
+  limiteAtivo: 1
+  intervaloDoLog: 1
 --- !u!4 &332683691
 Transform:
   m_ObjectHideFlags: 0
@@ -645,11 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2903da1f3ca42d7468eb3c660e614413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnProjectiles
-  spawnPoint: {fileID: 378317165}
-  trPlayer: {fileID: 1361757187}
-  vfx:
-  - {fileID: 8094035622093444501, guid: 139e916cf77ef334eab8f9b7108fdce6, type: 3}
-  tamanhoInicialDoPool: 20
 --- !u!4 &640001162
 Transform:
   m_ObjectHideFlags: 0
@@ -664,6 +665,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &775306565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 775306566}
+  m_Layer: 0
+  m_Name: SpawnMissel
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &775306566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775306565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.126, y: 1.455, z: 1.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1370577093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &799617727
 GameObject:
@@ -964,6 +996,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1361757189}
+    - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1361757190}
   m_SourcePrefab: {fileID: 100100000, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
 --- !u!1 &940850701
 GameObject:
@@ -1540,7 +1575,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!4 &1361757187 stripped
@@ -1557,11 +1592,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1361757183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c95951c51e2f2c4fa901e28db8c663a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d0c3bf57af3b9841b0de9f3cea6d027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimentacaoTerceiraPessoa
+  tr: {fileID: 0}
+  rb: {fileID: 0}
+  trCamera: {fileID: 329238249}
   velocidadeDeMovimento: 10
-  velocidadeDeCurva: 120
+  velocidadeDeRotacao: 5
+  frenteProjetada: {x: 0, y: 0, z: 0}
+  velFinal: {x: 0, y: 0, z: 0}
+  inputJogador: {x: 0, y: 0}
+  direcao: {x: 0, y: 0, z: 0}
+--- !u!114 &1361757190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361757183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16f0669da7c7534d9bf58c694ec06b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTeste
 --- !u!1 &1370577092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1649,7 @@ Transform:
   m_Children:
   - {fileID: 1228420940}
   - {fileID: 799617728}
+  - {fileID: 775306566}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1370577094
@@ -1631,7 +1686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb211d69e8a51fc41a826b305713b17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAt
+  tr: {fileID: 0}
   trAlvo: {fileID: 1361757187}
+  velRotacao: 3
 --- !u!1 &1395182001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,8 +1817,16 @@ MonoBehaviour:
   vidaMaxima: 100
   vidaAtual: 0
   danoProjetil: 10
-  playerProcjectile: {fileID: 8094035622093444501, guid: 139e916cf77ef334eab8f9b7108fdce6, type: 3}
   bossMesh: {fileID: 62586117}
+  estaMorto: 0
+  config: {fileID: 11400000, guid: cbbb38516bd620840bd415253911cfe3, type: 2}
+  pontoDeDisparo: {fileID: 775306566}
+  trPlayer: {fileID: 1361757187}
+  canalMudancaDeFase: {fileID: 11400000, guid: 40fd4b39baef00c4a83a0b9c97b44616, type: 2}
+  canalBossDerrotado: {fileID: 11400000, guid: ed8badb0f4a87f24385570d251c33798, type: 2}
+  logsDeControle: 1
+  faseAtual: 0
+  estadoAtual: 
 --- !u!54 &1479727870
 Rigidbody:
   m_ObjectHideFlags: 0

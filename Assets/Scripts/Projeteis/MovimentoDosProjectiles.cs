@@ -1,95 +1,47 @@
-using System.Collections;
 using UnityEngine;
 
-public class MovimentoDosProjectiles : MonoBehaviour
+namespace Projeteis
 {
-    Transform tr;
-    Rigidbody rb;
-    TrailRenderer[] rastros;
-    SpawnProjectiles spawner;
-    [SerializeField] float velocidade = 1f;
-    [SerializeField] float cadenciaDeTiro = 1f; //tempo minimo (em segundos) entre um tiro e outro desse projetil. Usado pelo SpawnProjectiles
-    [SerializeField] float vida = 3f;
+    public class MovimentoDosProjectiles : MonoBehaviour
+    {
+        [SerializeField] Transform tr;
+        [SerializeField] float velocidade = 1f;
+        [SerializeField] float cadenciaDeTiro = 1f;
+        [SerializeField] float vida = 3f;
 
-    float velocidadeInicial; //guardo os valores para resetar o projetil toda vez que ele for reutilizado
-    float vidaInicial;
-    void Awake()
-    {
-        tr = transform;
-        rb = GetComponent<Rigidbody>();
-        rastros = GetComponentsInChildren<TrailRenderer>();
-        velocidadeInicial = velocidade;
-        vidaInicial = vida;
-    }
-    void Update()
-    {
-        if (velocidade != 0)
+        void Start()
         {
-            tr.position += tr.forward * (velocidade * Time.deltaTime);
-        }
-        tempoDeVida();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        velocidade = 0;
-        vida = 0;
-    }
-
-    public float PropriedadeCadenciaDeTiro
-    {
-        get
-        { return cadenciaDeTiro; }
-        set
-        {
-            cadenciaDeTiro = value;
+            tr = transform;
         }
 
-    }
-
-    public SpawnProjectiles PropriedadeSpawner
-    {
-        set
+        // Update is called once per frame
+        void Update()
         {
-            spawner = value;
+            if (velocidade != 0)
+            {
+                tr.position += tr.forward * (velocidade * Time.deltaTime);
+            }
+            TempoDeVida();
         }
-    }
-
-    public void Disparar(Vector3 posicao, Quaternion rotacao)
-    {
-        //reseto tudo que mudou no uso anterior do projetil
-        velocidade = velocidadeInicial;
-        vida = vidaInicial;
-        tr.SetPositionAndRotation(posicao, rotacao);
-        rb.linearVelocity = Vector3.zero; //a colisao anterior pode ter deixado o rigidbody com velocidade/giro
-        rb.angularVelocity = Vector3.zero;
-
-        gameObject.SetActive(true);
-
-        for (int i = 0; i < rastros.Length; i++)
+        private void OnCollisionEnter(Collision collision)
         {
-            rastros[i].Clear(); //limpo o rastro, senao ele desenha uma linha da posicao antiga ate a nova
+            Destroy(gameObject);
         }
-    }
 
-    void tempoDeVida()
-    {
-        vida -= Time.deltaTime;
-
-        if (vida <= 0)
+        public float PropriedadeCadenciaDeTiro
         {
-            Desativar();
+            get => cadenciaDeTiro;
+            set => cadenciaDeTiro = value;
         }
-    }
 
-    void Desativar()
-    {
-        if (spawner != null)
+        void TempoDeVida()
         {
-            spawner.DevolverAoPool(gameObject); //em vez de destruir, devolvo o projetil para o pool
-        }
-        else
-        {
-            Destroy(gameObject); //se o projetil nao veio de um pool (ex: colocado direto na cena), destruo como antes
+            vida -= Time.deltaTime;
+
+            if(vida <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

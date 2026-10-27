@@ -1,47 +1,77 @@
-using System;
 using UnityEngine;
 
-public class MovimentacaoTerceiraPessoa : MonoBehaviour
+namespace Player
 {
-    Rigidbody rb;
-
-    [SerializeField] float velocidadeDeMovimento = 10f;
-    [SerializeField] float velocidadeDeCurva = 120f; //quantos graus por segundo o barco gira segurando A ou D 120 = volta completa em 3 segundos
-
-    Vector2 inputJogador;
-
-    void Start()
+    public class MovimentacaoTerceiraPessoa : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-    }
-    void Update()
-    {
-        LeInput();
-    }
-    private void FixedUpdate()
-    {
-        AplicarCurva();
-        AplicaMovimento();
-    }
+        [SerializeField] Transform tr;
+        [SerializeField] Rigidbody rb;
+  
+        [SerializeField] Transform trCamera;
+        [SerializeField] float velocidadeDeMovimento = 10f;
+        [SerializeField] float velocidadeDeRotacao = 5f;
 
-    void LeInput()
-    {
-        inputJogador.x = Input.GetAxis("Horizontal");
-        inputJogador.y = Input.GetAxis("Vertical");
+        [SerializeField] Vector3 frenteProjetada;
+        [SerializeField] Vector3 velFinal;
+        [SerializeField] Vector2 inputJogador;
+        [SerializeField] Vector3 direcao;
+
+        Quaternion rotacaoAlvo; //calculada no Update (input), aplicada no FixedUpdate (fisica)
+
+        void Start()
+        {
+            tr = transform;
+            rb = GetComponent<Rigidbody>();
+            rotacaoAlvo = rb.rotation;
+        }
+        void Update()
+        {
+            LeInput();
+            AplicarDirecao();
+        }
+        private void FixedUpdate()
+        {
+            AplicaMovimento();
+            AplicarRotacao();
+        }
+
+        void LeInput()
+        {
+            inputJogador.x = Input.GetAxis("Horizontal");
+            inputJogador.y = Input.GetAxis("Vertical");
+
+        }
+        private void AplicarDirecao()
+        {
+            if(inputJogador.magnitude > 0)
+            {
+                direcao = DirecaoRelativaCamera();
+                CalcularRotacao();
+            }
+        }
+        private void AplicaMovimento()
+        {
+            velFinal = DirecaoRelativaCamera() * velocidadeDeMovimento;
+            velFinal.y = rb.linearVelocity.y;
+            rb.linearVelocity = velFinal;
+        }
+        private void CalcularRotacao()
+        {
+            rotacaoAlvo = Quaternion.LookRotation(direcao, Vector3.up);
+        }
+        private void AplicarRotacao()
+        {
+            //MoveRotation gira pelo Rigidbody: respeita a interpolacao e nao briga com a fisica
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, rotacaoAlvo, velocidadeDeRotacao * Time.fixedDeltaTime));
+        }
+
+        private Vector3 DirecaoRelativaCamera()
+        {
+            frenteProjetada = Vector3.ProjectOnPlane(trCamera.forward, Vector3.up).normalized;
+            Vector3 dir = trCamera.right * inputJogador.x + frenteProjetada * inputJogador.y;
+            dir.y = 0;
+            return dir.normalized;
+        }
 
     }
-    private void AplicarCurva()
-    {
-        //giro só em volta do eixo Y (o "cima" do mundo), então o barco nunca empina nem inclina
-        Quaternion giro = Quaternion.Euler(0, inputJogador.x * velocidadeDeCurva * Time.fixedDeltaTime, 0);
-        rb.MoveRotation(giro * rb.rotation);
-    }
-    private void AplicaMovimento()
-    {
-        Vector3 frenteDoBarco = rb.rotation * Vector3.forward; //para onde o barco está apontando
-        Vector3 velFinal = frenteDoBarco * (inputJogador.y * velocidadeDeMovimento); 
-        velFinal.y = rb.linearVelocity.y; 
-        rb.linearVelocity = velFinal;
-    }
-
 }
