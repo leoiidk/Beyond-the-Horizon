@@ -16,10 +16,13 @@ namespace Player
         [SerializeField] Vector2 inputJogador;
         [SerializeField] Vector3 direcao;
 
+        Quaternion rotacaoAlvo; //calculada no Update (input), aplicada no FixedUpdate (fisica)
+
         void Start()
         {
             tr = transform;
             rb = GetComponent<Rigidbody>();
+            rotacaoAlvo = rb.rotation;
         }
         void Update()
         {
@@ -29,6 +32,7 @@ namespace Player
         private void FixedUpdate()
         {
             AplicaMovimento();
+            AplicarRotacao();
         }
 
         void LeInput()
@@ -42,7 +46,7 @@ namespace Player
             if(inputJogador.magnitude > 0)
             {
                 direcao = DirecaoRelativaCamera();
-                AplicarRotacao();
+                CalcularRotacao();
             }
         }
         private void AplicaMovimento()
@@ -51,9 +55,14 @@ namespace Player
             velFinal.y = rb.linearVelocity.y;
             rb.linearVelocity = velFinal;
         }
+        private void CalcularRotacao()
+        {
+            rotacaoAlvo = Quaternion.LookRotation(direcao, Vector3.up);
+        }
         private void AplicarRotacao()
         {
-            tr.forward = Vector3.Slerp(tr.forward, direcao, velocidadeDeRotacao * Time.deltaTime);
+            //MoveRotation gira pelo Rigidbody: respeita a interpolacao e nao briga com a fisica
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, rotacaoAlvo, velocidadeDeRotacao * Time.fixedDeltaTime));
         }
 
         private Vector3 DirecaoRelativaCamera()
