@@ -37,4 +37,9 @@ public class ScreenTransition : MonoBehaviour
     {
         IsTransitioning = false;
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }
