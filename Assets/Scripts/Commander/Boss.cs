@@ -38,6 +38,7 @@ namespace Commander
         internal ContextoAtaque Contexto { get; private set; }
         internal BossConfig Config => config;
         internal FaseBoss FaseAtualConfig => config.Fases[faseAtual];
+        internal bool EstaMorto => estaMorto;
 
         void Start()
         {
