@@ -23,7 +23,6 @@ public class SpawnProjectiles : MonoBehaviour
         {
            
             SpawnVFX();
-            
         }
     }
 
@@ -35,7 +34,7 @@ public class SpawnProjectiles : MonoBehaviour
         {
             direcao = trPlayer.transform.forward;
             vfx = Instantiate(efeitosParaSpawnar, spawnPoint.transform.position, Quaternion.LookRotation(direcao, Vector3.up));
-            
+            SoundManager.instance.SfxAttackPlayer();
         }
 
     }
