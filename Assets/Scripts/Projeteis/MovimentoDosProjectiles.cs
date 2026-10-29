@@ -43,5 +43,9 @@ namespace Projeteis
                 Destroy(gameObject);
             }
         }
+        public void DirecaoDoDisparo(Vector3 posicao, Quaternion rotacao) 
+        {
+            tr.SetPositionAndRotation(posicao, rotacao);
+        }
     }
 }

@@ -34,8 +34,9 @@ namespace Projeteis
 
             if (spawnPoint != null)
             {
-                direcao = (trPlayer.position - spawnPoint.transform.position).normalized;
-                Instantiate(efeitosParaSpawnar, spawnPoint.transform.position, Quaternion.LookRotation(direcao, Vector3.up));
+                direcao = (trPlayer.forward - spawnPoint.transform.position).normalized;
+                efeitosParaSpawnar.GetComponent<MovimentoDosProjectiles>().DirecaoDoDisparo(spawnPoint.transform.position, Quaternion.LookRotation(direcao, Vector3.up));
+                Instantiate(efeitosParaSpawnar);
             }
 
         }
