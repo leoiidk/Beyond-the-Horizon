@@ -703,7 +703,7 @@ GameObject:
   - component: {fileID: 640001162}
   - component: {fileID: 640001163}
   m_Layer: 0
-  m_Name: Controlador Projeteis
+  m_Name: Controlador_Projeteis_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,6 +742,7 @@ MonoBehaviour:
   - {fileID: 8094035622093444501, guid: 139e916cf77ef334eab8f9b7108fdce6, type: 3}
   efeitosParaSpawnar: {fileID: 0}
   direcao: {x: 0, y: 0, z: 0}
+  cadenciaDeTiro: 0
 --- !u!1 &734062630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 948458587838525769, guid: 59a7cd87095ec034b90f73dcfd36b14d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
