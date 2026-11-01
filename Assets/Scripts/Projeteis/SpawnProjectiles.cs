@@ -26,6 +26,7 @@ namespace Projeteis
             if (Input.GetKeyDown(KeyCode.Space)) 
             {
                 SpawnVFX();
+                SoundManager.instance.SfxAttackPlayer();
             }
         }
 
