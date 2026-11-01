@@ -32,6 +32,7 @@ namespace Commander
         [SerializeField] string estadoAtual;
 
         private Collider _colisor;
+        private Renderer[] _renderers;
         private SeletorDeAtaquePonderado _seletor;
 
         internal MaquinaDeEstadosBoss Maquina { get; private set; }
@@ -45,6 +46,7 @@ namespace Commander
             LogDeControle.Ativo = logsDeControle;
 
             _colisor = GetComponent<Collider>();
+            _renderers = bossMesh != null ? bossMesh.GetComponentsInChildren<Renderer>(true) : new Renderer[0];
             estaMorto = false;
             vidaAtual = vidaMaxima;
             AtualizarBarraDeVida();
@@ -117,8 +119,9 @@ namespace Commander
 
         internal void DefinirVisivel(bool visivel)
         {
-            LogDeControle.Registrar($"bossMesh.SetActive({visivel}), collider.enabled = {visivel}", this);
-            if (bossMesh != null) bossMesh.SetActive(visivel);
+            // Não desativa o GameObject: bossMesh pode ser o próprio objeto do Boss, e isso pararia o Update que traz ele de volta
+            LogDeControle.Registrar($"{_renderers.Length} renderers.enabled = {visivel}, collider.enabled = {visivel}", this);
+            foreach (Renderer rend in _renderers) rend.enabled = visivel;
             if (_colisor != null) _colisor.enabled = visivel;
         }
 
