@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,30 +13,49 @@ namespace Projeteis
         [SerializeField] GameObject efeitosParaSpawnar;
         [SerializeField] Vector3 direcao;
 
+        [SerializeField]float cadenciaDeTiro;
+        float tempoParaProximoTiro;
+
         void Start()
         {
+           
             if (vfx.Count > 0)
             {
                 efeitosParaSpawnar = vfx[0];
+                cadenciaDeTiro = efeitosParaSpawnar.GetComponent<MovimentoDosProjectiles>().PropriedadeCadenciaDeTiro;
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space)) 
+            if (tempoParaProximoTiro > 0)
             {
-                SpawnVFX();
+                tempoParaProximoTiro -= Time.deltaTime; //vou descontando o tempo que passou desde o ultimo tiro
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TentarAtirar();
             }
         }
+        void TentarAtirar()
+        {
+            if (tempoParaProximoTiro <= 0)
+            {
+                SpawnVFX();
+                tempoParaProximoTiro = cadenciaDeTiro;
+                SoundManager.instance.SfxAttackPlayer();
+            }
 
+        }
         private void SpawnVFX()
         {
 
             if (spawnPoint != null)
             {
-                direcao = (trPlayer.position - spawnPoint.transform.position).normalized;
-                Instantiate(efeitosParaSpawnar, spawnPoint.transform.position, Quaternion.LookRotation(direcao, Vector3.up));
+                direcao = (trPlayer.forward - spawnPoint.transform.position).normalized;
+                efeitosParaSpawnar.GetComponent<MovimentoDosProjectiles>().DirecaoDoDisparo(spawnPoint.transform.position, Quaternion.LookRotation(direcao, Vector3.up));
+                Instantiate(efeitosParaSpawnar);
             }
 
         }
