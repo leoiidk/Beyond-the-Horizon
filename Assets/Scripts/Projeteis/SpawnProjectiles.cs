@@ -44,6 +44,7 @@ namespace Projeteis
             {
                 SpawnVFX();
                 tempoParaProximoTiro = cadenciaDeTiro;
+                SoundManager.instance.SfxAttackPlayer();
             }
 
         }
