@@ -21,8 +21,12 @@ MonoBehaviour:
     ataques:
     - ataque: {fileID: 11400000, guid: e847b0b12847eec42a01c78a5dcbc8d7, type: 2}
       peso: 1
+    - ataque: {fileID: 11400000, guid: 24829ef18a93414492e6b8acd9f948e1, type: 2}
+      peso: 40
   - cooldownEntreAtaques: 1.5
     ataques:
     - ataque: {fileID: 11400000, guid: e847b0b12847eec42a01c78a5dcbc8d7, type: 2}
       peso: 1
+    - ataque: {fileID: 11400000, guid: 24829ef18a93414492e6b8acd9f948e1, type: 2}
+      peso: 40
   tempoDeTrocaDeFase: 5
