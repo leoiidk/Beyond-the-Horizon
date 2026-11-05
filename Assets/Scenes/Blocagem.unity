@@ -922,7 +922,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831775616
 MonoBehaviour:
@@ -1535,6 +1535,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1639531058}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1639531059}
   m_SourcePrefab: {fileID: 100100000, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
 --- !u!1 &1291265842
 GameObject:
@@ -1765,8 +1768,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0, y: 0, z: 0}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 12, y: 7, z: 25}
+  m_Center: {x: 0.2, y: 3.5, z: 3.4}
 --- !u!54 &1361757186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1834,6 +1837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f0669da7c7534d9bf58c694ec06b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTeste
+  tiroDoPlayer: {fileID: 640001163}
+  tempoDeRespawn: 2
 --- !u!1 &1395182001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,8 +2069,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 10.000001, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1516723086
 GameObject:
@@ -2295,6 +2300,20 @@ MonoBehaviour:
   tempoFlash: 0.1
   rendBoss: {fileID: 329106158}
   rendBall: {fileID: 1100052982}
+--- !u!114 &1639531059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639531052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1c2855b2da9c24f96f861fbbea1ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Commander.SensorDeAproximacaoBoss
+  boss: {fileID: 1639531058}
+  config: {fileID: 11400000, guid: beb313e07c1387b46ad6f5802232c03f, type: 2}
 --- !u!1 &1806782629
 GameObject:
   m_ObjectHideFlags: 0
