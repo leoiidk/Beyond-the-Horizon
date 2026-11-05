@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.13333334, g: 0.20000002, b: 0.45882356, a: 1}
+  m_FogColor: {r: 0.14901961, g: 0.23529413, b: 0.27450982, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.052
   m_LinearFogStart: -10
@@ -1665,7 +1665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!154 &1335191615
 TerrainCollider:
   m_ObjectHideFlags: 0

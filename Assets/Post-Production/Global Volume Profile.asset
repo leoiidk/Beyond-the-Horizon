@@ -15,10 +15,10 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9909771, z: 0.99097717, w: -0.12413788}
+    m_Value: {x: 0.8195937, y: 1, z: 0.9125234, w: -0.12413788}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.9239156, y: 1, z: 0.976622, w: 0.13793103}
+    m_Value: {x: 0.675561, y: 1, z: 0.8591359, w: 0.13793103}
   highlights:
     m_OverrideState: 1
     m_Value: {x: 0.6852585, y: 1, z: 0.7639432, w: -0.041379206}
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Name: Global Volume Profile
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
-  - {fileID: 8960587657415636022}
   - {fileID: -6239758689717378408}
   - {fileID: 711378315084643810}
   - {fileID: -4498209804418674014}
@@ -126,31 +125,3 @@ MonoBehaviour:
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
---- !u!114 &8960587657415636022
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ColorAdjustments
-  active: 0
-  postExposure:
-    m_OverrideState: 1
-    m_Value: -1.46
-  contrast:
-    m_OverrideState: 1
-    m_Value: -11
-  colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 0.76479167, g: 0.7802436, b: 0.81886786, a: 1}
-  hueShift:
-    m_OverrideState: 1
-    m_Value: -2
-  saturation:
-    m_OverrideState: 1
-    m_Value: -25
