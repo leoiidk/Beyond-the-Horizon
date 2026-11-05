@@ -17,9 +17,13 @@ namespace Commander.Ataques.GalacticaBeam
         [SerializeField] Vector2Int[] quantidadePorFase = { new(1, 2), new(1, 3), new(2, 4) };
         [Tooltip("Tempo entre um míssil e outro dentro da mesma execução")]
         [SerializeField] float intervaloEntreMisseis = 0.4f;
-        [Tooltip("Tempo que o míssil leva para chegar no ponto onde o player estava")]
+        [Tooltip("Tempo que o míssil leva para chegar no destino. Também é o quanto a mira se antecipa ao movimento do player")]
         [SerializeField] float tempoDeVoo = 1.5f;
         [SerializeField] float alturaDoArco = 8f;
+        [Tooltip("Quanto o míssil se afasta para o lado no meio do voo. O lado alterna a cada míssil; 0 = sem curva lateral")]
+        [SerializeField] float aberturaLateral = 6f;
+        [Tooltip("Raio do desvio aleatório em volta do ponto previsto, sorteado a cada míssil. Não se aplica com o player parado")]
+        [SerializeField] float raioDeDispersao = 3f;
 
         [Header("Dano")]
         // Dano em aberto: o design pede HIT KILL; ajustar quando o player tiver sistema de vida
@@ -31,6 +35,8 @@ namespace Commander.Ataques.GalacticaBeam
         public float IntervaloEntreMisseis => intervaloEntreMisseis;
         public float TempoDeVoo => tempoDeVoo;
         public float AlturaDoArco => alturaDoArco;
+        public float AberturaLateral => aberturaLateral;
+        public float RaioDeDispersao => raioDeDispersao;
         public float Dano => dano;
 
         public int SortearQuantidade(int fase)

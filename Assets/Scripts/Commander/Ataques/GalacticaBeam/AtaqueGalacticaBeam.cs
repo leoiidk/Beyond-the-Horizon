@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Commander.Ataques.GalacticaBeam
 {
-    // Carrega por um instante e lança mísseis em arco, um de cada vez, na posição atual do player
+    // Carrega por um instante e lança mísseis em arco, um de cada vez, mirando onde o player vai estar quando cada um pousar
     public class AtaqueGalacticaBeam : AtaqueBase
     {
         private readonly GalacticaBeamConfig _config;
@@ -76,16 +76,34 @@ namespace Commander.Ataques.GalacticaBeam
             }
 
             Vector3 origem = contexto.PontoDeDisparo.position;
-            // Captura a posição do player no momento do disparo: o míssil não persegue
-            Vector3 destino = contexto.Alvo.position;
+            // Calculado uma vez por míssil, no momento do disparo: depois de lançado, o míssil não persegue
+            Vector3 destino = CalcularDestino(contexto);
+            // Ímpar curva à esquerda, par à direita
+            float aberturaLateral = numero % 2 == 1 ? -_config.AberturaLateral : _config.AberturaLateral;
 
             IProjetilBoss missil = _config.FabricaDeMisseis.Criar(origem, Quaternion.identity);
             if (missil == null) return;
 
             _misseisEmVoo++;
             missil.AoFinalizar += () => _misseisEmVoo--;
-            LogDeControle.Registrar($"{_config.FabricaDeMisseis.name}.Criar() → míssil {numero}/{total} lançado de {origem} para {destino}", contexto.Executor);
-            missil.Lancar(origem, destino, _config.TempoDeVoo, _config.AlturaDoArco, _config.Dano);
+            LogDeControle.Registrar($"{_config.FabricaDeMisseis.name}.Criar() → míssil {numero}/{total} lançado de {origem} para {destino} (player em {contexto.Alvo.position}, velocidade {contexto.VelocidadeDoAlvo})", contexto.Executor);
+            missil.Lancar(origem, destino, _config.TempoDeVoo, _config.AlturaDoArco, aberturaLateral, _config.Dano);
+        }
+
+        // Onde o player vai estar quando o míssil pousar, com um desvio sorteado a cada míssil
+        Vector3 CalcularDestino(ContextoAtaque contexto)
+        {
+            Vector3 velocidade = contexto.VelocidadeDoAlvo;
+            velocidade.y = 0f; // só o plano horizontal: evita mirar acima/abaixo do player por oscilação vertical
+            Vector3 destino = contexto.Alvo.position + velocidade * _config.TempoDeVoo;
+
+            // Parado não tem desvio: os mísseis caem em cima do player
+            if (velocidade.sqrMagnitude < 0.01f) return destino;
+
+            Vector2 desvio = Random.insideUnitCircle * _config.RaioDeDispersao;
+            destino.x += desvio.x;
+            destino.z += desvio.y;
+            return destino;
         }
 
         void DestruirVfxDeCarga()

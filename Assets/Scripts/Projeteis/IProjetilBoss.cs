@@ -9,6 +9,7 @@ namespace Projeteis
         // Disparado quando o projétil termina (pousou, acertou algo ou foi destruído)
         event Action AoFinalizar;
 
-        void Lancar(Vector3 origem, Vector3 destino, float tempoDeVoo, float alturaDoArco, float dano);
+        // aberturaLateral: afastamento máximo para o lado no meio do voo (negativo = esquerda, positivo = direita)
+        void Lancar(Vector3 origem, Vector3 destino, float tempoDeVoo, float alturaDoArco, float aberturaLateral, float dano);
     }
 }

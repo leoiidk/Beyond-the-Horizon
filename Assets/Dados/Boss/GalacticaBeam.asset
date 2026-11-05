@@ -20,7 +20,9 @@ MonoBehaviour:
   - {x: 1, y: 2}
   - {x: 1, y: 3}
   - {x: 2, y: 4}
-  intervaloEntreMisseis: 0.4
-  tempoDeVoo: 1.5
+  intervaloEntreMisseis: 0.8
+  tempoDeVoo: 1
   alturaDoArco: 8
+  aberturaLateral: 10
+  raioDeDispersao: 0.5
   dano: 9999

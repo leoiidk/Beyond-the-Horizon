@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Projeteis
 {
-    // Míssil que sai da origem, faz um arco no ar e cai no destino depois de tempoDeVoo segundos
+    // Míssil que sai da origem na diagonal, faz um arco no ar curvando para o lado e cai no destino depois de tempoDeVoo segundos
     [RequireComponent(typeof(Collider))]
     public class MisselEmArco : MonoBehaviour, IProjetilBoss
     {
@@ -14,7 +14,7 @@ namespace Projeteis
         private Vector3 _origem;
         private Vector3 _destino;
         private float _tempoDeVoo;
-        private float _alturaDoArco;
+        private Vector3 _curva;
         private float _dano;
         private float _tempoDecorrido;
         private bool _emVoo;
@@ -27,12 +27,14 @@ namespace Projeteis
             GetComponent<Collider>().isTrigger = true;
         }
 
-        public void Lancar(Vector3 origem, Vector3 destino, float tempoDeVoo, float alturaDoArco, float dano)
+        public void Lancar(Vector3 origem, Vector3 destino, float tempoDeVoo, float alturaDoArco, float aberturaLateral, float dano)
         {
             _origem = origem;
             _destino = destino;
             _tempoDeVoo = Mathf.Max(0.01f, tempoDeVoo);
-            _alturaDoArco = alturaDoArco;
+            // Perpendicular horizontal à linha origem→destino, apontando para a direita de quem voa
+            Vector3 lateral = Vector3.Cross(Vector3.up, destino - origem).normalized;
+            _curva = Vector3.up * alturaDoArco + lateral * aberturaLateral;
             _dano = dano;
             _tempoDecorrido = 0f;
             _emVoo = true;
@@ -61,11 +63,11 @@ namespace Projeteis
             }
         }
 
-        // Linha reta entre origem e destino + altura de uma parábola: 4·h·t·(1−t) vale 0 nas pontas e h no meio do voo
+        // Linha reta entre origem e destino + curva em parábola: 4·curva·t·(1−t) vale 0 nas pontas e a curva inteira no meio do voo
         Vector3 CalcularPosicao(float t)
         {
             Vector3 posicao = Vector3.Lerp(_origem, _destino, t);
-            posicao.y += 4f * _alturaDoArco * t * (1f - t);
+            posicao += 4f * t * (1f - t) * _curva;
             return posicao;
         }
 

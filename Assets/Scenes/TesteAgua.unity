@@ -396,12 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115c85baac5799d449293e9bf9f46e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trObjetoParaOlhar: {fileID: 500000032}
-  velRotacao: 12
-  trObjetoParaSeguir: {fileID: 500000032}
-  velMovimento: 8
-  distanciaDoObjeto: {x: 0, y: 2, z: -6}
-  enquadramento: {x: 0, y: 4, z: 0}
 --- !u!1 &500000010
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +552,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8764403747236410677, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 816376208}
+    - targetCorrespondingSourceObject: {fileID: 8764403747236410677, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1353286478}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
       insertIndex: -1
@@ -566,15 +566,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 500000034}
+    - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 500000036}
   m_SourcePrefab: {fileID: 100100000, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
 --- !u!1 &500000031 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
-  m_PrefabInstance: {fileID: 500000030}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &500000032 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8764403747236410677, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
   m_PrefabInstance: {fileID: 500000030}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &500000033
@@ -603,14 +601,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ce9055ccc141bc875ee32d045b4f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.25
-  frequencia: 0.6
-  velocidadeAngular: 1.2
-  faseInicial: 0
-  direcaoOnda: {x: 1, y: 0}
+  rendererDaAgua: {fileID: 500000013}
   alturaDeFlutuacao: 0.1
   raioDeAmostragem: 1.5
   velocidadeDeInclinacao: 4
+--- !u!4 &500000035 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8764403747236410677, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
+  m_PrefabInstance: {fileID: 500000030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &500000036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500000031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f13ce39bfda6442b5c745d91917011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RastroBarco
+  flutuacao: {fileID: 500000034}
+  particulas: {fileID: 1353286476}
+  pontoDaPopa: {fileID: 816376208}
+  alturaSobreAgua: 0.05
+  velocidadeMaxima: 6
+  taxaPorDistanciaMaxima: 4
+--- !u!1 &816376207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 816376208}
+  m_Layer: 0
+  m_Name: Rastro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &816376208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816376207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 500000035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +708,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1353286476 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1780379212424908113, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+  m_PrefabInstance: {fileID: 1718656009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1353286478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+  m_PrefabInstance: {fileID: 1718656009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1718656009
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 500000035}
+    m_Modifications:
+    - target: {fileID: 6743950018442321733, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_Name
+      value: Trail_Barco
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 70.82912
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.079494
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -72.75861
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273512094116546938, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

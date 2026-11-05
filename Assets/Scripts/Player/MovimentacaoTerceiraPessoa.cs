@@ -16,6 +16,9 @@ namespace Player
         [SerializeField] Vector2 inputJogador;
         [SerializeField] Vector3 direcao;
 
+        [SerializeField] GameObject particula;
+        [SerializeField] Transform localParticula;
+
         Quaternion rotacaoAlvo; //calculada no Update (input), aplicada no FixedUpdate (fisica)
 
         void Start()
@@ -47,6 +50,8 @@ namespace Player
             {
                 direcao = DirecaoRelativaCamera();
                 CalcularRotacao();
+                SoundManager.instance.SfxMovingPlayer();
+                Instantiate(particula, localParticula.position, localParticula.rotation);
             }
         }
         private void AplicaMovimento()
