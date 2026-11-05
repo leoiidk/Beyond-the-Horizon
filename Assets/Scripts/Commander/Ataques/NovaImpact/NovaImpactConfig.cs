@@ -7,7 +7,7 @@ namespace Commander.Ataques.NovaImpact
     {
         [Header("Ativação e área")]
         [Tooltip("Distância do ponto de disparo do boss: ativa o sensor de aproximação e é o raio de dano do impacto")]
-        [SerializeField] float raio = 4f;
+        [SerializeField] float raio = 14f;
 
         [Header("Aviso")]
         [Tooltip("Opcional: nome do Trigger no Animator do boss. Disparado junto com o dano, sem antecipação")]

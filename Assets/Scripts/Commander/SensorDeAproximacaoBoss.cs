@@ -38,7 +38,10 @@ namespace Commander
             ContextoAtaque contexto = boss.Contexto;
             if (contexto?.PontoDeDisparo == null || contexto.Alvo == null) return;
 
-            float distancia = Vector3.Distance(contexto.PontoDeDisparo.position, contexto.Alvo.position);
+            Vector3 paraOAlvo = contexto.Alvo.position - contexto.PontoDeDisparo.position;
+            paraOAlvo.y = 0f;
+
+            float distancia = paraOAlvo.magnitude;
             bool dentroAgora = distancia <= config.Raio;
 
             if (dentroAgora && !_dentroDoRaio && !_emExecucao)
