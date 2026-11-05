@@ -1,3 +1,4 @@
+using System.Collections;
 using Commander.Ataques;
 using Commander.Estados;
 using Commander.Eventos;
@@ -31,6 +32,14 @@ namespace Commander
         [SerializeField] int faseAtual;
         [SerializeField] string estadoAtual;
 
+        [Header("Damage Flash")]
+        [SerializeField] private Material materialFlash;
+        [SerializeField] float  tempoFlash = 0.1f;  
+        private Material materialOriginalBoss;
+        private Material materialOriginalBall;
+        [SerializeField] Renderer rendBoss;
+        [SerializeField] Renderer rendBall;
+
         private Collider _colisor;
         private Renderer[] _renderers;
         private SeletorDeAtaquePonderado _seletor;
@@ -47,6 +56,8 @@ namespace Commander
 
             _colisor = GetComponent<Collider>();
             _renderers = bossMesh != null ? bossMesh.GetComponentsInChildren<Renderer>(true) : new Renderer[0];
+            materialOriginalBoss = rendBoss.material;
+            materialOriginalBall = rendBall.material;
             estaMorto = false;
             vidaAtual = vidaMaxima;
             AtualizarBarraDeVida();
@@ -81,6 +92,7 @@ namespace Commander
             vidaAtual -= danoProjetil;
             AtualizarBarraDeVida();
             LogDeControle.Registrar($"Recebeu {danoProjetil} de dano, vida {vidaAtual}/{vidaMaxima}", this);
+            Flash();
 
             if (vidaAtual <= 0)
             {
@@ -163,6 +175,20 @@ namespace Commander
 
             barraDeVida.maxValue = vidaMaxima;
             barraDeVida.value = vidaAtual;
+        }
+
+        private IEnumerator DanoFlash()
+        {
+            rendBoss.material = materialFlash;  
+            rendBall.material = materialFlash; 
+            yield return new WaitForSeconds(tempoFlash);
+            rendBoss.material = materialOriginalBoss;
+            rendBall.material = materialOriginalBall;
+        }
+
+        void Flash()
+        {
+            StartCoroutine(DanoFlash());
         }
     }
 }
