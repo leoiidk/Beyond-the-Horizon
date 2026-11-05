@@ -6,6 +6,9 @@ public class NavegacaoBarco : MonoBehaviour
 
     [SerializeField] float velocidadeDeAvanco = 6f;
     [SerializeField] float velocidadeDeGiro = 60f; // graus por segundo
+    
+    [SerializeField] GameObject particula;
+    [SerializeField] Transform localParticula;
 
     float inputAvanco;
     float inputGiro;
@@ -24,6 +27,11 @@ public class NavegacaoBarco : MonoBehaviour
     {
         AplicarGiro();
         AplicarAvanco();
+        if (inputAvanco > 0)
+        {
+            SoundManager.instance.SfxMovingPlayer();
+            Instantiate(particula, localParticula.position, localParticula.rotation);            
+        }
     }
 
     void LeInput()
@@ -34,8 +42,7 @@ public class NavegacaoBarco : MonoBehaviour
 
     void AplicarGiro()
     {
-        // Gira em torno do eixo mundial Y, preservando a inclinação (pitch/roll)
-        // que o FlutuacaoBarco já tenha aplicado neste frame.
+        //Serve para a flutuação.
         tr.Rotate(Vector3.up, inputGiro * velocidadeDeGiro * Time.fixedDeltaTime, Space.World);
     }
 
