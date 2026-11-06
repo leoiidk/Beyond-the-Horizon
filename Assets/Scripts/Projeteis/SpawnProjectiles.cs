@@ -33,7 +33,7 @@ namespace Projeteis
             {
                 tempoParaProximoTiro -= Time.deltaTime; //vou descontando o tempo que passou desde o ultimo tiro
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetAxis("Fire1") > 0)
             {
                 TentarAtirar();
             }

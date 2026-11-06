@@ -1845,6 +1845,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTeste
   tiroDoPlayer: {fileID: 640001163}
   tempoDeRespawn: 2
+--- !u!114 &1361757191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361757183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ce9055ccc141bc875ee32d045b4f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlutuacaoBarco
+  rendererDaAgua: {fileID: 854503849}
+  alturaDeFlutuacao: 0.1
+  raioDeAmostragem: 1.5
+  velocidadeDeInclinacao: 4
+--- !u!114 &1361757192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361757183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8163e44d766c437681841ad8077c5a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavegacaoBarco
+  velocidadeDeAvanco: 6
+  velocidadeDeGiro: 60
+  particula: {fileID: 6743950018442321733, guid: 83f92f3ea2d43cd498c6f80c3dac605c, type: 3}
+  localParticula: {fileID: 321745546}
 --- !u!1 &1395182001
 GameObject:
   m_ObjectHideFlags: 0
