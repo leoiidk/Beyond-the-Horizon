@@ -1665,6 +1665,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1639531060}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1639531061}
   m_SourcePrefab: {fileID: 100100000, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
 --- !u!1 &1335191614
 GameObject:
@@ -2270,6 +2273,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Commander.SensorDeAproximacaoBoss
   boss: {fileID: 1639531058}
   config: {fileID: 11400000, guid: beb313e07c1387b46ad6f5802232c03f, type: 2}
+--- !u!114 &1639531061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639531052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1e7c3a9d2f4e6a8c0b1d2e3f4a5b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Commander.SincronizadorAnimacaoBoss
+  boss: {fileID: 1639531058}
+  animador: {fileID: 1639531060}
+  colisor: {fileID: 1639531056}
+  parametroAtacando: IsAttack
+  estadoVulneravel: BossOff
 --- !u!95 &1639531060
 Animator:
   serializedVersion: 7
