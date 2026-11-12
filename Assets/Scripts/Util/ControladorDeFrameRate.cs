@@ -5,6 +5,7 @@ public class ControladorDeFrameRate : MonoBehaviour
     [SerializeField] int frameRateAlvo = 60; //FPS m�ximo do jogo
     [SerializeField] KeyCode teclaAlternar = KeyCode.P; //Liga/desliga o limite de FPS
     [SerializeField] bool limiteAtivo = true;
+    [SerializeField] bool usarVSync = true; //Sincroniza com o monitor (ignora o frameRateAlvo enquanto ligado)
     [SerializeField] float intervaloDoLog = 1f; //Segundos entre cada log de FPS
 
     int vSyncOriginal;
@@ -50,7 +51,7 @@ public class ControladorDeFrameRate : MonoBehaviour
     {
         if (limiteAtivo)
         {
-            QualitySettings.vSyncCount = 0;
+            QualitySettings.vSyncCount = usarVSync ? 1 : 0;
             Application.targetFrameRate = frameRateAlvo;
         }
         else
