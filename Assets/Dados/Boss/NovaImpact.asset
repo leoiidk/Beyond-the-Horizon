@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NovaImpact
   m_EditorClassIdentifier: Assembly-CSharp::Commander.Ataques.NovaImpact.NovaImpactConfig
   nome: 
-  raio: 4
+  raio: 14
   triggerDeAnimacao: 
   dano: 9999

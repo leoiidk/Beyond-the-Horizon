@@ -500,7 +500,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -917,7 +917,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831775616
 MonoBehaviour:
@@ -957,11 +957,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831775614}
   m_CullTransparentMesh: 1
---- !u!23 &854503849 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1596920239783088284, guid: 59a7cd87095ec034b90f73dcfd36b14d, type: 3}
-  m_PrefabInstance: {fileID: 1632770280}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &907488174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1068,12 +1063,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1361757190}
-    - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1361757192}
-    - targetCorrespondingSourceObject: {fileID: 8764403747236833621, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1361757191}
   m_SourcePrefab: {fileID: 100100000, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
 --- !u!1 &940850701
 GameObject:
@@ -1229,12 +1218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1541,6 +1530,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1639531058}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1639531059}
   m_SourcePrefab: {fileID: 100100000, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
 --- !u!1 &1291265842
 GameObject:
@@ -1771,8 +1763,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0, y: 0, z: 0}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 12, y: 7, z: 25}
+  m_Center: {x: 0.2, y: 3.5, z: 3.4}
 --- !u!54 &1361757186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1840,36 +1832,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f0669da7c7534d9bf58c694ec06b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTeste
---- !u!114 &1361757191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361757183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ce9055ccc141bc875ee32d045b4f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlutuacaoBarco
-  rendererDaAgua: {fileID: 854503849}
-  alturaDeFlutuacao: 0.1
-  raioDeAmostragem: 1.5
-  velocidadeDeInclinacao: 4
---- !u!114 &1361757192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361757183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8163e44d766c437681841ad8077c5a2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NavegacaoBarco
-  velocidadeDeAvanco: 6
-  velocidadeDeGiro: 60
+  tiroDoPlayer: {fileID: 640001163}
+  tempoDeRespawn: 2
 --- !u!1 &1395182001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,8 +1991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 10.000001, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1516723086
 GameObject:
@@ -2257,6 +2221,20 @@ MonoBehaviour:
   tempoFlash: 0.1
   rendBoss: {fileID: 329106158}
   rendBall: {fileID: 1100052982}
+--- !u!114 &1639531059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639531052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1c2855b2da9c24f96f861fbbea1ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Commander.SensorDeAproximacaoBoss
+  boss: {fileID: 1639531058}
+  config: {fileID: 11400000, guid: beb313e07c1387b46ad6f5802232c03f, type: 2}
 --- !u!1 &1806782629
 GameObject:
   m_ObjectHideFlags: 0
