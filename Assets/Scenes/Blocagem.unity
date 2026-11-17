@@ -94,7 +94,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 106d1ca7c14e2a9448b78b58645c5c21, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -460,12 +460,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraComTracking
   trObjetoParaSeguir: {fileID: 1361757187}
   trBoss: {fileID: 946562153}
-  distanciaAtras: 4
-  altura: 2
+  distanciaAtras: 6
+  altura: 1.3
   deslocamentoLateral: 0
   velMovimento: 8
   pesoDoBoss: 0.6
-  alturaDoOlhar: -1
+  alturaDoOlhar: 3
   velRotacao: 12
 --- !u!1 &332683689
 GameObject:
@@ -499,6 +499,7 @@ MonoBehaviour:
   frameRateAlvo: 60
   teclaAlternar: 112
   limiteAtivo: 1
+  usarVSync: 1
   intervaloDoLog: 1
 --- !u!4 &332683691
 Transform:
@@ -997,10 +998,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8764403747236410657, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -1056,15 +1053,43 @@ PrefabInstance:
     - target: {fileID: -7853663406327495844, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b0c9f76a2fa61a642be525fbbc480fae, type: 2}
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
     - target: {fileID: -7016257444857644961, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b0c9f76a2fa61a642be525fbbc480fae, type: 2}
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: -6314159111934681736, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
     - target: {fileID: -6067185528594298527, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b0c9f76a2fa61a642be525fbbc480fae, type: 2}
+    - target: {fileID: -5501083053979483582, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: -4308025912533118055, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: -2122072719152058284, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: -1716058440546054923, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: -604295826602517297, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: -573441670539550641, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
     - target: {fileID: 919132149155446097, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: m_Name
       value: player
@@ -1076,15 +1101,31 @@ PrefabInstance:
     - target: {fileID: 4474732044871899926, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b0c9f76a2fa61a642be525fbbc480fae, type: 2}
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
     - target: {fileID: 4506930083271806414, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b0c9f76a2fa61a642be525fbbc480fae, type: 2}
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: 4956532088607139665, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: 5892392013494999743, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: 6126444828411547113, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
     - target: {fileID: 8382615257576908640, guid: c688a78efb770014fbb839056e6af499, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b0c9f76a2fa61a642be525fbbc480fae, type: 2}
+      objectReference: {fileID: 2100000, guid: d3fcd99640e593641b0d93be1a7ef76d, type: 2}
+    - target: {fileID: 8764403747236410657, guid: e9ccc27bb6f9f944e8bda508e30456a5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1639,6 +1680,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
       propertyPath: m_Name
       value: boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbc52b8712662db4986fc925c27385e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2273,23 +2318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Commander.SensorDeAproximacaoBoss
   boss: {fileID: 1639531058}
   config: {fileID: 11400000, guid: beb313e07c1387b46ad6f5802232c03f, type: 2}
---- !u!114 &1639531061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639531052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b1e7c3a9d2f4e6a8c0b1d2e3f4a5b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Commander.SincronizadorAnimacaoBoss
-  boss: {fileID: 1639531058}
-  animador: {fileID: 1639531060}
-  colisor: {fileID: 1639531056}
-  parametroAtacando: IsAttack
-  estadoVulneravel: BossOff
 --- !u!95 &1639531060
 Animator:
   serializedVersion: 7
@@ -2312,6 +2340,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1639531061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639531052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1e7c3a9d2f4e6a8c0b1d2e3f4a5b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Commander.SincronizadorAnimacaoBoss
+  boss: {fileID: 1639531058}
+  animador: {fileID: 1639531060}
+  colisor: {fileID: 1639531056}
 --- !u!1 &1806782629
 GameObject:
   m_ObjectHideFlags: 0
