@@ -1150,9 +1150,6 @@ PrefabInstance:
       addedObject: {fileID: 1361757185}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c688a78efb770014fbb839056e6af499, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1361757189}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c688a78efb770014fbb839056e6af499, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1361757190}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c688a78efb770014fbb839056e6af499, type: 3}
       insertIndex: -1
@@ -1865,29 +1862,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c688a78efb770014fbb839056e6af499, type: 3}
   m_PrefabInstance: {fileID: 907488174}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1361757189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361757183}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d0c3bf57af3b9841b0de9f3cea6d027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovimentacaoTerceiraPessoa
-  tr: {fileID: 1361757187}
-  rb: {fileID: 1361757186}
-  trCamera: {fileID: 329238249}
-  velocidadeDeMovimento: 10
-  velocidadeDeRotacao: 5
-  frenteProjetada: {x: 0, y: 0, z: 0}
-  velFinal: {x: 0, y: 0, z: 0}
-  inputJogador: {x: 0, y: 0}
-  direcao: {x: 0, y: 0, z: 0}
-  particula: {fileID: 6743950018442321733, guid: 83f92f3ea2d43cd498c6f80c3dac605c, type: 3}
-  localParticula: {fileID: 321745546}
 --- !u!114 &1361757190
 MonoBehaviour:
   m_ObjectHideFlags: 0

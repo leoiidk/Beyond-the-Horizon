@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Projeteis;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Player
 {
-    public class PlayerTeste : MonoBehaviour,IDanificavel
+    public class PlayerTomarDano : MonoBehaviour,IDanificavel
     {
         [SerializeField] SpawnProjectiles tiroDoPlayer;
         [SerializeField] float tempoDeRespawn = 2f;

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a48a761-6612-4033-8b7b-192c262a86ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Beyond the Horizon/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beyond the Horizon/.idea/indexLayout.xml" afterDir="false" />
+    <list default="true" id="1042765c-d576-4f9e-9624-4356ccdf3f4f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Beyond the Horizon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beyond the Horizon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/vfx_Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/vfx_Projectile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocagem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocagem.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/MovimentacaoTerceiraPessoa.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/MovimentacaoTerceiraPessoa.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TesteAgua.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TesteAgua.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerTomarDano.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerTomarDano.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/FlutuacaoBarco.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/FlutuacaoBarco.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/FlutuacaoBarco.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/FlutuacaoBarco.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/NavegacaoBarco.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/NavegacaoBarco.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/NavegacaoBarco.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/NavegacaoBarco.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,21 +20,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Blocagem.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/IntroBoss.unity" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4,
-  &quot;fromUser&quot;: false
-}</component>
-  <component name="ProjectId" id="3Kkh8rYXlfntYacpH0tvMX0xSPJ" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="3MEhU4elPiFK46Wcq3FKVDg1egV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -36,12 +42,10 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "TEST",
-    "ignore.virus.scanning.warn.message": "true",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "JavaScript.Libraries"
+    "git-widget-placeholder": "leo/visual",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe" />
@@ -80,11 +84,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8a48a761-6612-4033-8b7b-192c262a86ee" name="Changes" comment="" />
-      <created>1792107323914</created>
+      <changelist id="1042765c-d576-4f9e-9624-4356ccdf3f4f" name="Changes" comment="" />
+      <created>1794921675441</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1792107323914</updated>
+      <updated>1794921675441</updated>
     </task>
     <servers />
   </component>
@@ -96,30 +100,5 @@
     <option name="hasUnityReference" value="true" />
     <option name="unityProject" value="true" />
     <option name="unityProjectFolder" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

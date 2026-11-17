@@ -589,6 +589,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadeDeAvanco: 6
   velocidadeDeGiro: 60
+  particula: {fileID: 0}
+  localParticula: {fileID: 0}
 --- !u!114 &500000034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,6 +728,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 500000035}
     m_Modifications:
+    - target: {fileID: 1780379212424908113, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6743950018442321733, guid: 95844203c6122d748b5b5d3d220e6c8c, type: 3}
       propertyPath: m_Name
       value: Trail_Barco

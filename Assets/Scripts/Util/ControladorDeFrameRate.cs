@@ -30,18 +30,12 @@ public class ControladorDeFrameRate : MonoBehaviour
         {
             limiteAtivo = !limiteAtivo;
             AplicarLimite();
-            // Debug.Log(limiteAtivo
-            //     ? $"[FrameRate] Limite LIGADO ({frameRateAlvo} FPS)"
-            //     : "[FrameRate] Limite DESLIGADO");
         }
 
-        //M�dia de FPS no intervalo (unscaled para n�o depender do timeScale)
         framesContados++;
         tempoAcumulado += Time.unscaledDeltaTime;
         if (tempoAcumulado >= intervaloDoLog)
         {
-            // float fps = framesContados / tempoAcumulado;
-            //Debug.Log($"[FrameRate] FPS atual: {fps:F1} | Limite: {(limiteAtivo ? "ligado" : "desligado")}");
             framesContados = 0;
             tempoAcumulado = 0f;
         }
