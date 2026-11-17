@@ -14,6 +14,11 @@ namespace Commander.Ataques.CosmicRift
         private Vector3 _origem;
         private Vector3 _direcao;
 
+        ContextoAtaque _contexto;
+        Quaternion _rotacao;
+        float _percorrido;
+        bool _ondaEmAndamento;
+
         public AtaqueCosmicRift(CosmicRiftConfig config) : base(config.Nome)
         {
             _config = config;
@@ -74,44 +79,59 @@ namespace Commander.Ataques.CosmicRift
 
             // Daqui em diante origem e direção ficam fixas: a onda não persegue o player
             AtualizarMira(contexto);
-            Quaternion rotacao = Quaternion.LookRotation(_direcao);
+            _contexto = contexto;
+            _rotacao = Quaternion.LookRotation(_direcao);
+            _percorrido = 0f;
             _atingidos.Clear();
 
             if (_config.VfxDaOnda != null)
             {
-                _vfxDaOndaAtivo = Object.Instantiate(_config.VfxDaOnda, _origem, rotacao);
+                _vfxDaOndaAtivo = Object.Instantiate(_config.VfxDaOnda, _origem, _rotacao);
                 _vfxDaOndaAtivo.transform.localScale = new Vector3(_config.Largura, _config.Altura, _config.Comprimento);
             }
 
             LogDeControle.Registrar($"Onda lançada de {_origem} na direção {_direcao} ({_config.Alcance}m em {_config.Duracao:F2}s, player em {contexto.Alvo.position})", contexto.Executor);
 
-            float percorridoAnterior = 0f;
-            float percorrido = 0f;
+            _ondaEmAndamento = true;
+            yield return MoverOnda();
+        }
+        IEnumerator MoverOnda()
+        {
+            float percorridoAnterior = _percorrido;
             while (true)
             {
-                AplicarDano(contexto, percorridoAnterior, percorrido, rotacao);
+                AplicarDano(_contexto, percorridoAnterior, _percorrido, _rotacao);
 
                 if (_vfxDaOndaAtivo != null)
                 {
-                    _vfxDaOndaAtivo.transform.position = _origem + _direcao * percorrido;
+                    _vfxDaOndaAtivo.transform.position = _origem + _direcao * _percorrido;
                 }
 
-                if (percorrido >= _config.Alcance) break;
+                if (_percorrido >= _config.Alcance) break;
 
                 yield return null;
 
-                percorridoAnterior = percorrido;
-                percorrido = Mathf.Min(percorrido + _config.Velocidade * Time.deltaTime, _config.Alcance);
+                percorridoAnterior = _percorrido;
+                _percorrido = Mathf.Min(_percorrido + _config.Velocidade * Time.deltaTime, _config.Alcance);
             }
 
+            _ondaEmAndamento = false;
             DestruirVfx(ref _vfxDaOndaAtivo);
         }
 
         public override void Cancelar()
         {
-            // A onda é movida por esta corotina: sem ela não há mais dano, então o visual some junto
+            DestruirVfx(ref _vfxDaOndaAtivo);
+
+            if (_ondaEmAndamento && _contexto != null && _contexto.Executor != null && _contexto.Executor.isActiveAndEnabled)
+            {
+                // A onda é movida por esta corotina: sem ela não há mais dano, então o visual some junto
+                LogDeControle.Registrar($"Cancelado com a onda em {_percorrido:F1}/{_config.Alcance}m: ela continua até o fim do alcance", _contexto.Executor);
+                _contexto.Executor.StartCoroutine(MoverOnda());
+                return;
+            }
             LogDeControle.Registrar("Cancelado: destruindo VFX de aviso e da onda");
-            DestruirVfx(ref _vfxDeAvisoAtivo);
+            _ondaEmAndamento = false;
             DestruirVfx(ref _vfxDaOndaAtivo);
         }
 

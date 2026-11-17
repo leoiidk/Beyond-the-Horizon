@@ -32,6 +32,7 @@ namespace Commander.Ataques.NovaImpact
         protected override IEnumerator Disparar(ContextoAtaque contexto)
         {
             Vector3 centro = contexto.PontoDeDisparo.position;
+            if(contexto.Alvo != null) centro.y = contexto.Alvo.position.y;
             var atingidos = new HashSet<IDanificavel>();
 
             foreach (Collider colisor in Physics.OverlapSphere(centro, _config.Raio))

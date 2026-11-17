@@ -20,6 +20,7 @@ namespace Player
         [SerializeField] Transform localParticula;
 
         Quaternion rotacaoAlvo; //calculada no Update (input), aplicada no FixedUpdate (fisica)
+        bool estavaAndando;
 
         void Start()
         {
@@ -46,12 +47,20 @@ namespace Player
         }
         private void AplicarDirecao()
         {
-            if(inputJogador.magnitude > 0)
+            if (inputJogador.magnitude > 0)
             {
                 direcao = DirecaoRelativaCamera();
                 CalcularRotacao();
-                SoundManager.instance.SfxMovingPlayer();
+                if (!estavaAndando)
+                {
+                    SoundManager.instance.SfxMovingPlayer();
+                }
+                estavaAndando = true;
                 Instantiate(particula, localParticula.position, localParticula.rotation);
+            }
+            else 
+            { 
+                estavaAndando = false;
             }
         }
         private void AplicaMovimento()
