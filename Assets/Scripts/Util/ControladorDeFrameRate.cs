@@ -1,62 +1,60 @@
 using UnityEngine;
 
-public class ControladorDeFrameRate : MonoBehaviour
+namespace Util
 {
-    [SerializeField] int frameRateAlvo = 60; //FPS m�ximo do jogo
-    [SerializeField] KeyCode teclaAlternar = KeyCode.P; //Liga/desliga o limite de FPS
-    [SerializeField] bool limiteAtivo = true;
-    [SerializeField] float intervaloDoLog = 1f; //Segundos entre cada log de FPS
-
-    int vSyncOriginal;
-    int frameRateOriginal;
-    int framesContados;
-    float tempoAcumulado;
-
-    void Awake()
+    public class ControladorDeFrameRate : MonoBehaviour
     {
-        vSyncOriginal = QualitySettings.vSyncCount;
-        frameRateOriginal = Application.targetFrameRate;
-    }
+        [SerializeField] int frameRateAlvo = 60; //FPS m�ximo do jogo
+        [SerializeField] KeyCode teclaAlternar = KeyCode.P; //Liga/desliga o limite de FPS
+        [SerializeField] bool limiteAtivo = true;
+        [SerializeField] bool usarVSync = true; //Sincroniza com o monitor (ignora o frameRateAlvo enquanto ligado)
+        [SerializeField] float intervaloDoLog = 1f; //Segundos entre cada log de FPS
 
-    void Start()
-    {
-        AplicarLimite();
-    }
+        int vSyncOriginal;
+        int frameRateOriginal;
+        int framesContados;
+        float tempoAcumulado;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(teclaAlternar))
+        void Awake()
         {
-            limiteAtivo = !limiteAtivo;
+            vSyncOriginal = QualitySettings.vSyncCount;
+            frameRateOriginal = Application.targetFrameRate;
+        }
+
+        void Start()
+        {
             AplicarLimite();
-            // Debug.Log(limiteAtivo
-            //     ? $"[FrameRate] Limite LIGADO ({frameRateAlvo} FPS)"
-            //     : "[FrameRate] Limite DESLIGADO");
         }
 
-        //M�dia de FPS no intervalo (unscaled para n�o depender do timeScale)
-        framesContados++;
-        tempoAcumulado += Time.unscaledDeltaTime;
-        if (tempoAcumulado >= intervaloDoLog)
+        void Update()
         {
-            // float fps = framesContados / tempoAcumulado;
-            //Debug.Log($"[FrameRate] FPS atual: {fps:F1} | Limite: {(limiteAtivo ? "ligado" : "desligado")}");
-            framesContados = 0;
-            tempoAcumulado = 0f;
-        }
-    }
+            if (Input.GetKeyDown(teclaAlternar))
+            {
+                limiteAtivo = !limiteAtivo;
+                AplicarLimite();
+            }
 
-    void AplicarLimite()
-    {
-        if (limiteAtivo)
-        {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = frameRateAlvo;
+            framesContados++;
+            tempoAcumulado += Time.unscaledDeltaTime;
+            if (tempoAcumulado >= intervaloDoLog)
+            {
+                framesContados = 0;
+                tempoAcumulado = 0f;
+            }
         }
-        else
+
+        void AplicarLimite()
         {
-            QualitySettings.vSyncCount = vSyncOriginal;
-            Application.targetFrameRate = frameRateOriginal;
+            if (limiteAtivo)
+            {
+                QualitySettings.vSyncCount = usarVSync ? 1 : 0;
+                Application.targetFrameRate = frameRateAlvo;
+            }
+            else
+            {
+                QualitySettings.vSyncCount = vSyncOriginal;
+                Application.targetFrameRate = frameRateOriginal;
+            }
         }
     }
 }

@@ -15,11 +15,11 @@ MonoBehaviour:
   nome: 
   tempoDeAviso: 1
   triggerDeAnimacao: 
-  vfxDeAviso: {fileID: 6528693931363198496, guid: 28e56ba6719749c449f57950abf76491, type: 3}
+  vfxDeAviso: {fileID: 0}
   velocidade: 25
   alcance: 60
   largura: 8
-  comprimento: 3
-  altura: 6
-  vfxDaOnda: {fileID: 6528693931363198496, guid: 28e56ba6719749c449f57950abf76491, type: 3}
+  comprimento: 8
+  altura: 8
+  vfxDaOnda: {fileID: 6528693931363198496, guid: c86b0ab4b541f7c41b5a87b29381691b, type: 3}
   dano: 9999
