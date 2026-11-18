@@ -34,24 +34,24 @@ public class SoundManager : MonoBehaviour
     #region Player
     public void SfxMovingPlayer()
     {
-        Debug.Log("vrum");
+        // Debug.Log("vrum");
         sfxManager.PlayOneShot(movingSoundPlayer);
     }
     public void SfxAttackPlayer()
     {
-        Debug.Log("tirinho");
+        // Debug.Log("tirinho");
         sfxManager.PlayOneShot(attackSoundPlayer);
     }
      
     public void SfxDamagePlayer()
     {
-        Debug.Log("ai");
+        // Debug.Log("ai");
         sfxManager.PlayOneShot(damageSoundPlayer);
     }
 
     public void SfxDiePlayer()
     {
-        Debug.Log("morri");
+        // Debug.Log("morri");
         sfxManager.PlayOneShot(dieSoundPlayer);
     }
     #endregion

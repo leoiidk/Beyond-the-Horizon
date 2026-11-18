@@ -5,12 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Beyond the Horizon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Beyond the Horizon/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/vfx_Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/vfx_Projectile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocagem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocagem.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TesteAgua.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TesteAgua.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/NavegacaoBarco.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/NavegacaoBarco.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerTomarDano.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerTomarDano.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/FlutuacaoBarco.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/FlutuacaoBarco.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/FlutuacaoBarco.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/FlutuacaoBarco.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/NavegacaoBarco.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/NavegacaoBarco.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Testes/TesteAgua/Scripts/NavegacaoBarco.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/NavegacaoBarco.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projeteis/SpawnProjectiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projeteis/SpawnProjectiles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Util/ControladorDeFrameRate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Util/ControladorDeFrameRate.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,13 +20,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Readme.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Blocagem.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/IntroBoss.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="3MEhU4elPiFK46Wcq3FKVDg1egV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,7 +43,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "leo/visual",
+    "git-widget-placeholder": "guilherme",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>

@@ -15,7 +15,7 @@ namespace Player
 
         [SerializeField] private int poolSize;
         
-        private Queue<GameObject> _pool = new Queue<GameObject>();
+        private Queue<GameObject> _pool = new();
 
         float inputAvanco;
         float inputGiro;

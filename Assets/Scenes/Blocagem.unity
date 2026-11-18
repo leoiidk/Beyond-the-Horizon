@@ -776,10 +776,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projeteis.SpawnProjectiles
   spawnPoint: {fileID: 378317165}
   trPlayer: {fileID: 1361757187}
+  direcao: {x: 0, y: 0, z: 0}
+  playerData: {fileID: 1361757193}
   vfx:
   - {fileID: 8094035622093444501, guid: 139e916cf77ef334eab8f9b7108fdce6, type: 3}
   efeitosParaSpawnar: {fileID: 0}
-  direcao: {x: 0, y: 0, z: 0}
   cadenciaDeTiro: 0
 --- !u!1 &734062630
 GameObject:
@@ -985,6 +986,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831775614}
   m_CullTransparentMesh: 1
+--- !u!1 &841023297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841023299}
+  - component: {fileID: 841023298}
+  m_Layer: 0
+  m_Name: Spawnitens
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &841023298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841023297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76334c834d613324bb2919eaddd7bec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Itens.SpawnDeItens
+  prefabItem: {fileID: 6528693931363198496, guid: 8bf7a310b3bbe804f862ede5d3840333, type: 3}
+  tempoVisivel: 15
+  playerData: {fileID: 1361757193}
+  trBoss: {fileID: 1639531053}
+  limiteDoCenario: {fileID: 286111841}
+  diametroZonaNegativa: 30
+  diametroZonaSegura: 120
+  raioLongeDoPlayer: 15
+  alturaDoSpawn: 2
+  maxTentativas: 30
+--- !u!4 &841023299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841023297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.27296, y: 6.6648, z: 7.38376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &845197306 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1596920239783088284, guid: 59a7cd87095ec034b90f73dcfd36b14d, type: 3}
@@ -1157,6 +1212,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c688a78efb770014fbb839056e6af499, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1361757192}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c688a78efb770014fbb839056e6af499, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1361757193}
   m_SourcePrefab: {fileID: 100100000, guid: c688a78efb770014fbb839056e6af499, type: 3}
 --- !u!1 &940850701
 GameObject:
@@ -1875,6 +1933,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTeste
   tiroDoPlayer: {fileID: 640001163}
+  playerData: {fileID: 1361757193}
+  movimentacao: {fileID: 0}
   tempoDeRespawn: 2
 --- !u!114 &1361757191
 MonoBehaviour:
@@ -1908,6 +1968,21 @@ MonoBehaviour:
   velocidadeDeGiro: 60
   particula: {fileID: 6743950018442321733, guid: 83f92f3ea2d43cd498c6f80c3dac605c, type: 3}
   localParticula: {fileID: 321745546}
+  poolSize: 5
+--- !u!114 &1361757193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361757183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1b7ef6d39f4785b071134ac3056259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerData
+  vidaInicial: 3
+  balasIniciais: 10
 --- !u!1 &1395182001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2346,7 @@ MonoBehaviour:
   trPlayer: {fileID: 1361757187}
   canalMudancaDeFase: {fileID: 11400000, guid: 40fd4b39baef00c4a83a0b9c97b44616, type: 2}
   canalBossDerrotado: {fileID: 11400000, guid: ed8badb0f4a87f24385570d251c33798, type: 2}
-  logsDeControle: 1
+  logsDeControle: 0
   faseAtual: 0
   estadoAtual: 
   materialFlash: {fileID: 2100000, guid: c6e4e56197e05a041b8f5ca12650283e, type: 2}
@@ -2525,3 +2600,4 @@ SceneRoots:
   - {fileID: 2132442166}
   - {fileID: 332683691}
   - {fileID: 1267790079}
+  - {fileID: 841023299}
