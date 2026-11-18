@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f1e6f3981b72f4cb75957ebf2a37a7, type: 3}
   m_Name: FabricaPorInstanciacao
   m_EditorClassIdentifier: Assembly-CSharp::Projeteis.FabricaPorInstanciacao
-  prefab: {fileID: 6528693931363198496, guid: 28e56ba6719749c449f57950abf76491, type: 3}
+  prefab: {fileID: 6528693931363198496, guid: c86b0ab4b541f7c41b5a87b29381691b, type: 3}
