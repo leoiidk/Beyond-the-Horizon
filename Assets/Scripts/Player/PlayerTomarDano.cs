@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Projeteis;
 using UnityEngine;
@@ -6,33 +5,44 @@ using UnityEngine.SceneManagement;
 
 namespace Player
 {
-    public class PlayerTeste : MonoBehaviour,IDanificavel
+    public class PlayerTomarDano : MonoBehaviour,IDanificavel
     {
         [SerializeField] SpawnProjectiles tiroDoPlayer;
+        [SerializeField] PlayerData playerData;
+        [Tooltip("Script de movimento desligado ao morrer (NavegacaoBarco ou MovimentacaoTerceiraPessoa). Se vazio, procura NavegacaoBarco no player")]
+        [SerializeField] Behaviour movimentacao;
         [SerializeField] float tempoDeRespawn = 2f;
 
         Rigidbody rb;
-        MovimentacaoTerceiraPessoa movimentacao;
-        bool estaMorto;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
-            movimentacao = GetComponent<MovimentacaoTerceiraPessoa>();
-            tiroDoPlayer = FindFirstObjectByType<SpawnProjectiles>();
+            if (movimentacao == null) movimentacao = GetComponent<NavegacaoBarco>();
+
+            if (playerData == null)
+            {
+                Debug.LogError("[PlayerTomarDano] playerData não configurado no Inspector", this);
+            }
         }
         public void ReceberDano(float dano)
         {
-            if(estaMorto) return;
-            Debug.Log($"Player atingido: {dano}!");
-            Morrer();
+            if (!playerData.IsAlive) return;
+            
+            playerData.TakeHit();
+            Debug.Log($"VIDA: {playerData.Life}");
+
+            if (!playerData.IsAlive)
+            {
+                Morrer();
+            }
         }
         private void Morrer()
         {
-            estaMorto = true;
-            movimentacao.enabled = false;
-            rb.linearVelocity = Vector3.zero;
-            tiroDoPlayer.enabled = false;
+            // nada aqui pode quebrar antes do StartCoroutine, senão a luta nunca recomeça
+            if (movimentacao != null) movimentacao.enabled = false;
+            if (rb != null) rb.linearVelocity = Vector3.zero;
+            if (tiroDoPlayer != null) tiroDoPlayer.enabled = false;
 
             foreach (Renderer rend in GetComponentsInChildren<Renderer>())
             {
@@ -41,9 +51,13 @@ namespace Player
 
             StartCoroutine(RecomecarLuta());
         }
+        
         IEnumerator RecomecarLuta()
         {
             yield return new WaitForSeconds(tempoDeRespawn);
+
+            // só restaura depois da espera: durante o respawn o player tem que continuar morto
+            playerData.Resurrect();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
