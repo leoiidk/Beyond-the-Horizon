@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Player;
+using TMPro;
 using UnityEngine;
 
 namespace Projeteis
@@ -16,6 +17,8 @@ namespace Projeteis
 
         [SerializeField]float cadenciaDeTiro;
         float tempoParaProximoTiro;
+        
+        [SerializeField] private TMP_Text text;
 
         void Start()
         {
@@ -29,6 +32,7 @@ namespace Projeteis
                 efeitosParaSpawnar = vfx[0];
                 cadenciaDeTiro = efeitosParaSpawnar.GetComponent<MovimentoDosProjectiles>().PropriedadeCadenciaDeTiro;
             }
+            text.text = playerData.Bullets.ToString();
         }
 
         // Update is called once per frame
@@ -50,7 +54,7 @@ namespace Projeteis
                 playerData.TryUseBullet();
                 tempoParaProximoTiro = cadenciaDeTiro;
                 SoundManager.instance.SfxAttackPlayer();
-                Debug.Log($"QTDE: {playerData.Bullets}");
+                text.text = playerData.Bullets.ToString();
             }
 
         }
