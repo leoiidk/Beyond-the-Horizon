@@ -35,6 +35,8 @@ namespace Commander.Ataques.CosmicRift
                 }
             }
 
+            if (SoundManager.instance != null) SoundManager.instance.SfxAttackBoss();
+
             // Direção inicial caso o player esteja exatamente em cima do ponto de disparo
             _direcao = Vector3.ProjectOnPlane(contexto.PontoDeDisparo.forward, Vector3.up).normalized;
             if (_direcao == Vector3.zero) _direcao = Vector3.forward;

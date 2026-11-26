@@ -42,6 +42,7 @@ namespace Commander.Ataques.GalacticaBeam
                     yield return new WaitForSeconds(_config.IntervaloEntreMisseis);
                 }
                 LancarMissil(contexto, i + 1, quantidade);
+                if (SoundManager.instance != null) SoundManager.instance.SfxMissilBoss();
             }
         }
 

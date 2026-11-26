@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: GalacticaBeam
   m_EditorClassIdentifier: Assembly-CSharp::Commander.Ataques.GalacticaBeam.GalacticaBeamConfig
   nome: 
-  tempoDeCarga: 1
+  tempoDeCarga: 0.5
   vfxDeCarga: {fileID: 0}
   fabricaDeMisseis: {fileID: 11400000, guid: bc2bd659bfdbbfa489273915b6ec6007, type: 2}
   quantidadePorFase:
-  - {x: 1, y: 2}
-  - {x: 1, y: 3}
+  - {x: 2, y: 3}
   - {x: 2, y: 4}
-  intervaloEntreMisseis: 0.8
-  tempoDeVoo: 1
+  - {x: 3, y: 5}
+  intervaloEntreMisseis: 0.45
+  tempoDeVoo: 0.9
   alturaDoArco: 8
   aberturaLateral: 10
-  raioDeDispersao: 0.5
+  raioDeDispersao: 0.8
   dano: 9999

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+// Liga os sliders de volume das Opções ao Audio Mixer e guarda os valores
 public class ControleDeVolume : MonoBehaviour
 {
     [SerializeField] AudioMixer mixer;
@@ -9,6 +10,7 @@ public class ControleDeVolume : MonoBehaviour
     [SerializeField] Slider sliderMusica;
     [SerializeField] Slider sliderEfeitos;
 
+    // nomes dos parâmetros expostos no mixer (também usados como chave no PlayerPrefs)
     public const string Geral = "VolumeGeral";
     public const string Musica = "VolumeMusica";
     public const string Efeitos = "VolumeEfeitos";
@@ -35,12 +37,14 @@ public class ControleDeVolume : MonoBehaviour
         });
     }
 
+    // o slider vai de 0 a 1, o mixer trabalha em decibéis
     static void Aplicar(AudioMixer mixer, string nome, float valor)
     {
         if (mixer == null) return;
         mixer.SetFloat(nome, Mathf.Log10(Mathf.Max(valor, 0.0001f)) * 20f);
     }
 
+    // chamado no começo de cada cena para usar os volumes escolhidos no menu
     public static void AplicarVolumesSalvos(AudioMixer mixer)
     {
         Aplicar(mixer, Geral, PlayerPrefs.GetFloat(Geral, 0.8f));

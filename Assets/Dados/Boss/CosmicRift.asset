@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CosmicRift
   m_EditorClassIdentifier: Assembly-CSharp::Commander.Ataques.CosmicRift.CosmicRiftConfig
   nome: 
-  tempoDeAviso: 1
+  tempoDeAviso: 0.9
   triggerDeAnimacao: 
   vfxDeAviso: {fileID: 0}
-  velocidade: 25
+  velocidade: 32
   alcance: 60
   largura: 8
   comprimento: 8

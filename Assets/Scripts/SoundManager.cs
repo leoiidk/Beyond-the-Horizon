@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class SoundManager : MonoBehaviour
             instance = this;
         }
     }
-    #endregion 
+    #endregion
 
     [SerializeField] AudioSource sfxManager;
+
+    [Header("Mixer (volumes salvos nas Opções)")]
+    [SerializeField] AudioMixer mixer;
 
     [Header("Player")]
     [SerializeField] AudioClip movingSoundPlayer;
@@ -30,55 +34,120 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip attackSoundBoss;
     [SerializeField] AudioClip damageSoundBoss;
     [SerializeField] AudioClip dieSoundBoss;
-    
+    [SerializeField] AudioClip missilSoundBoss;
+    [SerializeField] AudioClip trocaDeFaseSoundBoss;
+
+    // som do motor e do boss parado tocam em loop, cada um no seu AudioSource
+    AudioSource motor;
+    AudioSource bossLoop;
+    float tempoDoUltimoMovimento = -10f;
+    float tempoDoUltimoDanoBoss = -10f;
+
+    void Start()
+    {
+        ControleDeVolume.AplicarVolumesSalvos(mixer);
+
+        if (movingSoundPlayer != null)
+        {
+            motor = CriarLoop(movingSoundPlayer);
+            motor.volume = 0f;
+            motor.Play();
+        }
+
+        if (movingSoundBoss != null)
+        {
+            bossLoop = CriarLoop(movingSoundBoss);
+            bossLoop.volume = 0.5f;
+            bossLoop.Play();
+        }
+    }
+
+    AudioSource CriarLoop(AudioClip clip)
+    {
+        AudioSource fonte = gameObject.AddComponent<AudioSource>();
+        fonte.clip = clip;
+        fonte.loop = true;
+        fonte.playOnAwake = false;
+        fonte.outputAudioMixerGroup = sfxManager.outputAudioMixerGroup;
+        return fonte;
+    }
+
+    void Update()
+    {
+        // o motor sobe enquanto o barco anda e desce quando ele para
+        if (motor != null)
+        {
+            bool andando = Time.time - tempoDoUltimoMovimento < 0.15f;
+            float alvo = andando ? 0.6f : 0f;
+            motor.volume = Mathf.MoveTowards(motor.volume, alvo, Time.unscaledDeltaTime * 1.5f);
+        }
+    }
+
+    public void PararSomDoBoss()
+    {
+        if (bossLoop != null) bossLoop.Stop();
+    }
+
     #region Player
     public void SfxMovingPlayer()
     {
-        // Debug.Log("vrum");
-        sfxManager.PlayOneShot(movingSoundPlayer);
+        // chamado todo frame em que o barco anda
+        tempoDoUltimoMovimento = Time.time;
     }
     public void SfxAttackPlayer()
     {
-        // Debug.Log("tirinho");
-        sfxManager.PlayOneShot(attackSoundPlayer);
+        Tocar(attackSoundPlayer);
     }
-     
+
     public void SfxDamagePlayer()
     {
-        // Debug.Log("ai");
-        sfxManager.PlayOneShot(damageSoundPlayer);
+        Tocar(damageSoundPlayer);
     }
 
     public void SfxDiePlayer()
     {
-        // Debug.Log("morri");
-        sfxManager.PlayOneShot(dieSoundPlayer);
+        Tocar(dieSoundPlayer);
     }
     #endregion
 
     #region Boss
-        public void SfxMovingBoss()
+    public void SfxMovingBoss()
     {
-        Debug.Log("wow");
-        sfxManager.PlayOneShot(movingSoundBoss);
+        Tocar(movingSoundBoss);
     }
     public void SfxAttackBoss()
     {
-        Debug.Log("fudeu");
-        sfxManager.PlayOneShot(attackSoundBoss);
+        Tocar(attackSoundBoss);
     }
-     
+
+    public void SfxMissilBoss()
+    {
+        Tocar(missilSoundBoss);
+    }
+
+    public void SfxTrocaDeFaseBoss()
+    {
+        Tocar(trocaDeFaseSoundBoss);
+    }
+
     public void SfxDamageBoss()
     {
-        Debug.Log("toma");
-        sfxManager.PlayOneShot(damageSoundBoss);
+        // vários tiros seguidos não empilham o mesmo som
+        if (Time.time - tempoDoUltimoDanoBoss < 0.35f) return;
+        tempoDoUltimoDanoBoss = Time.time;
+        Tocar(damageSoundBoss, 0.7f);
     }
 
     public void SfxDieBoss()
     {
-        Debug.Log("morreu");
-        sfxManager.PlayOneShot(dieSoundBoss);
+        PararSomDoBoss();
+        Tocar(dieSoundBoss);
     }
     #endregion
 
+    void Tocar(AudioClip clip, float volume = 1f)
+    {
+        if (clip == null || sfxManager == null) return;
+        sfxManager.PlayOneShot(clip, volume);
+    }
 }
