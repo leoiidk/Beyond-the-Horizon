@@ -137,9 +137,9 @@ Material:
     - _Sun_Reflection_Speed: 0.1
     - _Surface: 0
     - _Surface_Receive_Shadows: 1
-    - _Vertex_Wave_Amplitude: 0.7
-    - _Vertex_Wave_Angular_Speed: 5
-    - _Vertex_Wave_Frequency: 5
+    - _Vertex_Wave_Amplitude: 0.3
+    - _Vertex_Wave_Angular_Speed: 3
+    - _Vertex_Wave_Frequency: 3
     - _Vertex_Wave_Phase: 0.62
     - _Voronoi_Density: 35
     - _Water_Depth_Distance: 0.5

@@ -42,6 +42,15 @@ namespace Projeteis
             {
                 tempoParaProximoTiro -= Time.deltaTime; //vou descontando o tempo que passou desde o ultimo tiro
             }
+            // o texto acompanha a munição (inclusive quando o barco coleta balas)
+            if (text.text != playerData.Bullets.ToString())
+            {
+                text.text = playerData.Bullets.ToString();
+            }
+
+            // jogo pausado: não atira
+            if (Time.timeScale == 0f) return;
+
             if (Input.GetAxis("Fire1") > 0 && playerData.HasBullets)
             {
                 TentarAtirar();
