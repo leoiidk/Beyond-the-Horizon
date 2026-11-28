@@ -18,6 +18,7 @@ namespace Commander.Estados
             _tempoRestante = _boss.Config.TempoDeTrocaDeFase;
             LogDeControle.Registrar($"DefinirVisivel(false), boss volta em {_tempoRestante}s", _boss);
             _boss.DefinirVisivel(false);
+            if (SoundManager.instance != null) SoundManager.instance.SfxTrocaDeFaseBoss();
         }
 
         public void Atualizar()

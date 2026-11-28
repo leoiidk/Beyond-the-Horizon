@@ -31,6 +31,7 @@ namespace Commander.Ataques.NovaImpact
 
         protected override IEnumerator Disparar(ContextoAtaque contexto)
         {
+            if (SoundManager.instance != null) SoundManager.instance.SfxAttackBoss();
             Vector3 centro = contexto.PontoDeDisparo.position;
             if(contexto.Alvo != null) centro.y = contexto.Alvo.position.y;
             var atingidos = new HashSet<IDanificavel>();

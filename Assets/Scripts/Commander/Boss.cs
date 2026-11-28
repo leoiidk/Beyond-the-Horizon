@@ -91,6 +91,7 @@ namespace Commander
 
             vidaAtual -= danoProjetil;
             AtualizarBarraDeVida();
+            if (SoundManager.instance != null) SoundManager.instance.SfxDamageBoss();
             LogDeControle.Registrar($"Recebeu {danoProjetil} de dano, vida {vidaAtual}/{vidaMaxima}", this);
             Flash();
 
@@ -160,6 +161,7 @@ namespace Commander
         {
             DefinirVisivel(false);
             if (barraDeVida != null) barraDeVida.gameObject.SetActive(false);
+            if (SoundManager.instance != null) SoundManager.instance.SfxDieBoss();
 
             LogDeControle.Registrar("Boss derrotado definitivamente!", this);
             if (canalBossDerrotado != null)

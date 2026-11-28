@@ -3,8 +3,15 @@ using UnityEngine;
 
 namespace Commander
 {
+    // O que este script faz:
+    // 1. Quando o Boss está ATACANDO, manda o Animator para BossOn (boss sobe).
+    // 2. Quando o Boss NÃO está atacando, manda o Animator para BossOff (boss desce).
+    // 3. Só deixa o collider ligado (boss pode levar dano) quando ele está embaixo.
+    //
+    // Ele só LÊ o estado do Boss. Não muda nada no Boss.cs.
     public class SincronizadorAnimacaoBoss : MonoBehaviour
     {
+        // Arraste aqui no Inspector. Se ficar vazio, o script procura no próprio objeto.
         public Boss boss;
         public Animator animador;
         public Collider colisor;
@@ -19,6 +26,7 @@ namespace Commander
 
         void Update()
         {
+            // A máquina de estados só existe depois que o Boss roda o Start()
             if (boss.Maquina == null) return;
 
             // Pergunta ao Boss em qual estado ele está agora
@@ -34,6 +42,7 @@ namespace Commander
         }
 
         // LateUpdate roda depois de todos os Update.
+        // Assim a nossa decisão sobre o collider é a última do quadro.
         void LateUpdate()
         {
             if (boss.Maquina == null) return;

@@ -43,6 +43,7 @@ namespace Player
             if (movimentacao != null) movimentacao.enabled = false;
             if (rb != null) rb.linearVelocity = Vector3.zero;
             if (tiroDoPlayer != null) tiroDoPlayer.enabled = false;
+            if (SoundManager.instance != null) SoundManager.instance.SfxDiePlayer();
 
             foreach (Renderer rend in GetComponentsInChildren<Renderer>())
             {

@@ -833,6 +833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTeste
   tiroDoPlayer: {fileID: 0}
+  playerData: {fileID: 0}
+  movimentacao: {fileID: 0}
   tempoDeRespawn: 2
 --- !u!114 &2464143616828838237
 MonoBehaviour:
@@ -863,9 +865,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavegacaoBarco
   velocidadeDeAvanco: 6
-  velocidadeDeGiro: 60
+  velocidadeDeGiro: 150
   particula: {fileID: 6743950018442321733, guid: 83f92f3ea2d43cd498c6f80c3dac605c, type: 3}
   localParticula: {fileID: 5003172460702123991}
+  poolSize: 0
 --- !u!4 &7549394705776104069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c688a78efb770014fbb839056e6af499, type: 3}
